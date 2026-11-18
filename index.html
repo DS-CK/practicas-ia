@@ -256,8 +256,17 @@
   <p>Utiliza los pedidos ficticios que ya existen en este libro para crear una hoja llamada «Panel de pedidos». No inventes nuevos registros ni modifiques los datos originales.</p>
   <p>Crea un panel interactivo con estos elementos:</p>
   <h3>SELECTOR VISUAL DE PERIODO</h3>
-  <p>Añade arriba una segmentación de datos con botones grandes para seleccionar meses, no un desplegable. Identifica cada mes con su año y ordénalos cronológicamente.</p>
-  <p>Distribuye los botones en una o dos filas, con estilo azul sobre fondo claro y un contraste marcado para la selección. Permite seleccionar varios periodos y borrar el filtro para mostrar todos los datos.</p>
+  <p>Crea una segmentación de datos para filtrar la tabla por meses, con estas características:</p>
+  <ul>
+    <li>Usa fechas reales para ordenar los botones cronológicamente, primero por año y después por mes.</li>
+    <li>Muestra únicamente el <b>mes en letras y el año</b>, por ejemplo, «enero 2026». No muestres el día ni el número del mes.</li>
+    <li>Colócala encima de la tabla, con <b>3 columnas</b> y un ancho compacto, suficiente para leer todas las etiquetas completas.</li>
+    <li>Usa un estilo azul sobre fondo claro, con contraste marcado para los meses seleccionados.</li>
+    <li>Mantén todos los botones del mismo tamaño y todos los nombres de los meses en minúsculas.</li>
+    <li>Quita el título de la segmentación, pero conserva los controles de selección múltiple y borrado del filtro.</li>
+    <li>Comprueba que permite seleccionar varios meses y volver a mostrar todos los datos.</li>
+  </ul>
+  <p>Si necesitas una columna auxiliar de periodo, créala con el primer día de cada mes y aplícale el formato <code>mmmm yyyy</code> <b>antes de crear la segmentación</b>, para que los botones muestren las etiquetas correctamente.</p>
   <h3>GRÁFICO DE BURBUJAS</h3>
   <p>Resume los datos por proveedor y representa:</p>
   <ul>
