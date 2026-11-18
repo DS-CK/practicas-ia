@@ -1,0 +1,764 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Radar Exportación CHIC-KLES</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: sticky band with tabs; each tab is a single working surface (summary first, detail below). */
+:root{
+  --bg:#F1F5F2; --surface:#FFFFFF; --sunk:#E6EEE9; --ink:#10231E; --muted:#566B63; --line:#D3DFD8;
+  --accent:#0B7A57; --accent-ink:#FFFFFF; --accent-soft:#D5EDE3; --berry:#D63C64; --berry-soft:#F9DDE5;
+  --ok:#23804A; --ok-soft:#DCF0E2; --warn:#A86A12; --warn-soft:#F7EBD3; --bad:#BF352E; --bad-soft:#F8DEDB;
+  --r1:#1C7A8E; --r2:#6F55C2; --r3:#D07A22; --r4:#C2457A;
+  --band:#0E2C24; --band-ink:#E8F3EE; --band-muted:#9DBAAF;
+  --f-display:"Bricolage Grotesque", "Avenir Next", "Segoe UI", sans-serif;
+  --f-body:"Figtree", "Segoe UI", system-ui, sans-serif;
+  --f-mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --r:10px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0C1613; --surface:#13201C; --sunk:#0F1B17; --ink:#E2EDE8; --muted:#92A79F; --line:#25372F;
+  --accent:#38C08F; --accent-ink:#06150F; --accent-soft:#163A2D; --berry:#FF7499; --berry-soft:#3D1A25;
+  --ok:#5CC77D; --ok-soft:#163423; --warn:#E3B04E; --warn-soft:#3A2D12; --bad:#F2695E; --bad-soft:#3E1A17;
+  --r1:#4DB6CB; --r2:#A48BF0; --r3:#F0A25A; --r4:#EE7AAA;
+  --band:#08110E; --band-ink:#E2EDE8; --band-muted:#8AA69B; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0C1613; --surface:#13201C; --sunk:#0F1B17; --ink:#E2EDE8; --muted:#92A79F; --line:#25372F;
+  --accent:#38C08F; --accent-ink:#06150F; --accent-soft:#163A2D; --berry:#FF7499; --berry-soft:#3D1A25;
+  --ok:#5CC77D; --ok-soft:#163423; --warn:#E3B04E; --warn-soft:#3A2D12; --bad:#F2695E; --bad-soft:#3E1A17;
+  --r1:#4DB6CB; --r2:#A48BF0; --r3:#F0A25A; --r4:#EE7AAA;
+  --band:#08110E; --band-ink:#E2EDE8; --band-muted:#8AA69B; color-scheme:dark}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.55}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--band)}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.12}
+h2{font-size:clamp(1.5rem,2.6vw,2rem);font-weight:800;letter-spacing:-.01em}
+h3{font-size:1.1rem;font-weight:700}
+p{margin:0}
+a{color:var(--accent)}
+.mono,.num{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.eyebrow{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.muted{color:var(--muted)}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* Header band */
+header.band{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--band);color:var(--band-ink)}
+.band-row{display:flex;align-items:center;gap:16px;padding-block:12px 0;flex-wrap:wrap}
+.logo{font-family:var(--f-display);font-weight:800;font-size:1.15rem;letter-spacing:-.01em;display:flex;align-items:baseline;gap:8px}
+.logo b{background:var(--accent);color:var(--accent-ink);padding:1px 8px;border-radius:6px}
+.logo span{color:var(--band-muted);font-weight:500;font-size:.85rem;font-family:var(--f-body)}
+.model-switch{margin-left:auto;display:flex;border:1px solid #ffffff2b;border-radius:999px;padding:3px;gap:2px}
+.model-switch button{background:none;border:0;color:var(--band-muted);padding:5px 12px;border-radius:999px;cursor:pointer;font-size:.82rem;font-weight:600}
+.model-switch button[aria-pressed="true"]{background:var(--band-ink);color:var(--band)}
+nav.tabs{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;padding-top:10px}
+nav.tabs::-webkit-scrollbar{display:none}
+nav.tabs a{color:var(--band-muted);text-decoration:none;padding:9px 13px 11px;font-weight:600;font-size:.9rem;white-space:nowrap;border-bottom:3px solid transparent}
+nav.tabs a[aria-current="page"]{color:var(--band-ink);border-color:var(--accent)}
+nav.tabs a:hover{color:var(--band-ink)}
+
+main{padding-block:28px 64px}
+section.view{display:grid;gap:24px}
+.head{display:grid;gap:8px;max-width:760px}
+.head p{color:var(--muted)}
+
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px}
+.grid2>*,.grid3>*{min-width:0}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+
+/* Hero */
+.hero{display:grid;grid-template-columns:1.25fr 1fr;gap:28px;align-items:end}
+@media (max-width:820px){.hero{grid-template-columns:1fr}}
+.hero h1{font-size:clamp(2rem,4.6vw,3.4rem);font-weight:800;letter-spacing:-.025em}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero .lead{font-size:1.06rem;color:var(--muted);max-width:60ch;margin-top:14px}
+.kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.kpi{background:var(--surface);padding:14px 16px;display:grid;gap:2px}
+.kpi .v{font-family:var(--f-display);font-weight:800;font-size:1.6rem;letter-spacing:-.02em}
+.kpi .l{font-size:.8rem;color:var(--muted)}
+
+.thesis{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.route{border-radius:var(--r);padding:20px;border:1px solid var(--line);background:var(--surface);display:grid;gap:10px;align-content:start}
+.route .tag{justify-self:start}
+.route ul{margin:0;padding-left:18px;display:grid;gap:4px}
+
+.swot{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.swot>div{background:var(--surface);padding:16px 18px;display:grid;gap:8px;align-content:start}
+.swot ul{margin:0;padding-left:18px;display:grid;gap:6px;font-size:.93rem}
+
+.tag{display:inline-flex;align-items:center;gap:6px;font-size:.74rem;font-weight:700;padding:3px 9px;border-radius:999px;letter-spacing:.02em;white-space:nowrap}
+.tag.pl{background:var(--accent-soft);color:var(--accent)}
+.tag.own{background:var(--berry-soft);color:var(--berry)}
+.tag.ok{background:var(--ok-soft);color:var(--ok)}
+.tag.warn{background:var(--warn-soft);color:var(--warn)}
+.tag.bad{background:var(--bad-soft);color:var(--bad)}
+.tag.neutral{background:var(--sunk);color:var(--muted)}
+.callout{border-left:4px solid var(--warn);background:var(--warn-soft);padding:12px 16px;border-radius:0 var(--r) var(--r) 0;font-size:.93rem}
+.callout.bad{border-color:var(--bad);background:var(--bad-soft)}
+
+/* Market matrix */
+.matrix{display:grid;grid-template-columns:300px 1fr;gap:20px;align-items:start}
+@media (max-width:900px){.matrix{grid-template-columns:1fr}}
+.weights{display:grid;gap:14px}
+.wgroup{display:grid;gap:10px}
+.wrow{display:grid;grid-template-columns:1fr 34px;gap:4px 10px;align-items:center;font-size:.88rem}
+.wrow input{grid-column:1/-1;width:100%;accent-color:var(--accent)}
+.wrow .num{text-align:right;color:var(--muted)}
+.chart-wrap{overflow-x:auto}
+svg text{fill:var(--muted);font-family:var(--f-mono);font-size:11px}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:.82rem;color:var(--muted)}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;background:var(--sunk);white-space:nowrap}
+tbody tr:last-child td{border-bottom:0}
+tbody tr.click{cursor:pointer}
+tbody tr.click:hover{background:var(--sunk)}
+td.r,th.r{text-align:right}
+.bar{display:flex;align-items:center;gap:8px;min-width:140px}
+.bar span{flex:1;height:8px;background:var(--sunk);border-radius:99px;overflow:hidden}
+.bar span i{display:block;height:100%;background:var(--accent);border-radius:99px}
+.code{font-family:var(--f-mono);font-size:.72rem;font-weight:500;border:1px solid var(--line);padding:1px 5px;border-radius:4px;margin-right:8px;color:var(--muted)}
+
+/* Country */
+.country-top{display:flex;gap:12px;align-items:end;flex-wrap:wrap;justify-content:space-between}
+select{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 12px;min-width:220px}
+.score-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.score-strip>div{background:var(--surface);padding:12px 14px;display:grid;gap:2px}
+.score-strip .v{font-family:var(--f-display);font-weight:800;font-size:1.45rem}
+.fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.field{display:grid;gap:4px}
+.field label{font-size:.78rem;color:var(--muted);font-weight:600}
+.field input,.field select{width:100%;min-width:0;background:var(--sunk);border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-family:var(--f-mono);font-size:.9rem}
+.field .hint{font-size:.72rem;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{background:var(--sunk);border:1px solid var(--line);border-radius:999px;padding:3px 10px;font-size:.84rem}
+.list{margin:0;padding-left:18px;display:grid;gap:6px}
+.btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:8px 14px;font-weight:600;cursor:pointer;font-size:.88rem}
+.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.btn:hover{filter:brightness(.97)}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+
+/* Simulator */
+.sim{display:grid;grid-template-columns:340px 1fr;gap:20px;align-items:start}
+@media (max-width:900px){.sim{grid-template-columns:1fr}}
+.sim .fields{grid-template-columns:1fr 1fr}
+.results{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.results>div{background:var(--surface);padding:12px 14px;display:grid;gap:2px}
+.results .v{font-family:var(--f-display);font-weight:800;font-size:1.35rem;letter-spacing:-.01em}
+.results .v.neg{color:var(--bad)} .results .v.pos{color:var(--ok)}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.seg button{border:0;background:var(--surface);padding:7px 12px;cursor:pointer;font-weight:600;font-size:.85rem;color:var(--muted)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+
+/* Claims */
+.claim{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;padding:14px 16px;border-bottom:1px solid var(--line)}
+.claim:last-child{border-bottom:0}
+.claim .q{font-weight:600}
+.claim .d{grid-column:2;font-size:.9rem;color:var(--muted)}
+textarea{width:100%;min-height:96px;background:var(--sunk);border:1px solid var(--line);border-radius:8px;padding:10px 12px;resize:vertical}
+
+/* Roadmap */
+.phases{display:grid;gap:16px}
+.phase{display:grid;grid-template-columns:170px 1fr;gap:16px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px}
+@media (max-width:640px){.phase{grid-template-columns:1fr}}
+.phase .when{display:grid;gap:4px;align-content:start}
+.phase .when b{font-family:var(--f-display);font-size:1.05rem}
+.task{display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-bottom:1px dashed var(--line);font-size:.93rem}
+.task:last-child{border-bottom:0}
+.task input{margin-top:4px;accent-color:var(--accent);width:16px;height:16px;flex:none}
+.task.done span{color:var(--muted);text-decoration:line-through}
+.progress{height:8px;background:var(--sunk);border-radius:99px;overflow:hidden}
+.progress i{display:block;height:100%;background:var(--accent)}
+
+.sources{display:grid;gap:8px;margin:0;padding-left:20px}
+footer{border-top:1px solid var(--line);padding-block:18px;color:var(--muted);font-size:.82rem}
+@media (prefers-reduced-motion:no-preference){.bar i,.progress i{transition:width .3s ease}}
+</style>
+
+<header class="band">
+  <div class="wrap">
+    <div class="band-row">
+      <div class="logo"><b>CHIC-KLES</b> Radar de exportación <span>para dirección y marketing</span></div>
+      <div class="model-switch" role="group" aria-label="Modelo de entrada">
+        <button id="m-pl" data-model="pl" aria-pressed="true" title="Fabricar marca blanca para cadenas extranjeras">Marca blanca</button>
+        <button id="m-own" data-model="own" aria-pressed="false" title="Exportar la marca CHIC-KLES">Marca propia</button>
+      </div>
+    </div>
+    <nav class="tabs" aria-label="Secciones">
+      <a href="#diagnostico">Diagnóstico</a>
+      <a href="#mercados">Mercados</a>
+      <a href="#pais">Ficha país</a>
+      <a href="#simulador">Simulador P&amp;L</a>
+      <a href="#claims">Claims</a>
+      <a href="#ruta">Hoja de ruta</a>
+      <a href="#fuentes">Fuentes</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+<!-- DIAGNÓSTICO -->
+<section class="view" id="v-diagnostico" data-view="diagnostico">
+  <div class="hero">
+    <div>
+      <div class="eyebrow">Diagnóstico · octubre 2026</div>
+      <h1>Ya fabricáis el chicle del líder de España. La pregunta es <em>para quién fabricáis en Europa.</em></h1>
+      <p class="lead">Chic-kles Gum es un fabricante con escala industrial (Riba-roja del Túria) que produce para Mercadona y vende su propia marca sin azúcar. Eso abre dos caminos de expansión con economías muy distintas. Esta herramienta los compara país a país.</p>
+    </div>
+    <div class="kpis" aria-label="Datos públicos de la empresa">
+      <div class="kpi"><span class="v num">52,7 M€</span><span class="l">Ventas 2024 (récord, +3%)</span></div>
+      <div class="kpi"><span class="v num">≈3 M€</span><span class="l">Beneficio neto 2024 (0,9 M€ en 2023)</span></div>
+      <div class="kpi"><span class="v num">+10,7%</span><span class="l">Producción 2024 vs 2023</span></div>
+      <div class="kpi"><span class="v num">≈60 M€</span><span class="l">Invertidos desde 2009 · 4,7 M€ en 2024</span></div>
+      <div class="kpi"><span class="v num">&gt;200</span><span class="l">Empleados</span></div>
+      <div class="kpi"><span class="v num">8</span><span class="l">Sabores CHIC-KLES · web en ES / EN / PT</span></div>
+    </div>
+  </div>
+
+  <div class="thesis">
+    <div class="route">
+      <span class="tag pl">Camino A · Marca blanca</span>
+      <h3>Vender capacidad y know-how a cadenas europeas</h3>
+      <p class="muted">Lo que ya hacéis con Hacendado, replicado con discounters y cadenas que buscan un proveedor independiente de chicle sin azúcar.</p>
+      <ul>
+        <li>La marca de distribuidor ya es el 38,7% del gran consumo en 17 países europeos; en España y Portugal la confitería ganó 1,7 puntos.</li>
+        <li>Perfetti Van Melle compró el negocio de chicle de Mondelez en Europa y Norteamérica (Trident, Hollywood, Dentyne). Con Mars Wrigley, el chicle de marca queda en dos manos, y eso empuja a las cadenas a buscar alternativas.</li>
+        <li>Volumen rápido con poca inversión en marketing, a cambio de márgenes estrechos y dependencia de pocos clientes.</li>
+      </ul>
+    </div>
+    <div class="route">
+      <span class="tag own">Camino B · Marca propia</span>
+      <h3>Llevar CHIC-KLES a mercados donde pueda ganar un hueco</h3>
+      <p class="muted">Más margen y valor de marca, pero hay que pagar la entrada en lineal, el reparto del distribuidor y la notoriedad frente a Extra, Orbit, Trident o Mentos.</p>
+      <ul>
+        <li>Encaja mejor en canales donde las grandes marcas pesan menos: farmacia, droguería, gasolineras, conveniencia y e-commerce.</li>
+        <li>Mercados con afinidad cultural y logística cercana (Portugal, Marruecos, México) o sabores diferenciales (jengibre, limón y própolis).</li>
+        <li>Requiere corregir antes los claims de salud de la web (ver pestaña Claims).</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="swot">
+    <div><span class="tag ok">Fortalezas</span><ul>
+      <li>Planta moderna con 15+ años de inversión y escala para un cliente exigente como Mercadona.</li>
+      <li>Rentabilidad recuperada tras centrarse solo en chicle (salida de Xuxes y Kubitos).</li>
+      <li>Capacidad de I+D en chicle funcional probada (Deliplus Energy y Deliplus B12).</li>
+      <li>Gama sin azúcar amplia, con sabores poco habituales (eucalipto; jengibre, limón y própolis).</li>
+    </ul></div>
+    <div><span class="tag warn">Debilidades</span><ul>
+      <li>Alta concentración de ventas en un solo cliente.</li>
+      <li>Notoriedad baja de la marca CHIC-KLES fuera de España.</li>
+      <li>La web promete beneficios (estrés, concentración) que no son claims autorizados en la UE.</li>
+      <li>Sin tienda online propia ni presencia visible en redes en la web.</li>
+    </ul></div>
+    <div><span class="tag pl">Oportunidades</span><ul>
+      <li>El sin azúcar es ≈59% del chicle en Europa y crece más que el total.</li>
+      <li>Mercadona en Portugal: 74 tiendas en 2026, 2.090 M€ de ventas en 2025 (+18%).</li>
+      <li>Chicle funcional (vitaminas, cafeína, xilitol) y gomas biodegradables como palancas de innovación.</li>
+      <li>El e-commerce es el canal que más crece en Europa (≈11% anual estimado).</li>
+    </ul></div>
+    <div><span class="tag bad">Amenazas</span><ul>
+      <li>Categoría en declive en Reino Unido y Francia; menos compra por impulso al caer el uso de efectivo.</li>
+      <li>Consolidación de grandes marcas con fuerte poder en lineal.</li>
+      <li>Normativa sobre plásticos y basura en la base de chicle.</li>
+      <li>Coste de materias primas (polioles, base de goma) y presión de precios en marca blanca.</li>
+    </ul></div>
+  </div>
+  <p class="muted" style="font-size:.85rem">Las cifras de empresa proceden de Alimarket (julio 2025) y El Español (octubre 2024). Las de mercado, de las fuentes listadas en la pestaña Fuentes.</p>
+</section>
+
+<!-- MERCADOS -->
+<section class="view" id="v-mercados" data-view="mercados" hidden>
+  <div class="head">
+    <div class="eyebrow">Priorización de mercados</div>
+    <h2>¿Dónde entrar primero?</h2>
+    <p>Cada país puntúa en atractivo (tamaño, crecimiento, sin azúcar, marca blanca) y facilidad (logística desde Valencia, idioma, regulación, competencia). Los pesos cambian según el modelo elegido arriba; ajústalos a vuestro criterio.</p>
+  </div>
+  <div class="callout">Los datos de cada país son estimaciones orientativas a partir de fuentes públicas y criterio experto, no datos auditados. Sustitúyelos en Ficha país en cuanto tengáis cifras de NielsenIQ, Circana o del distribuidor; la matriz se recalcula sola.</div>
+  <div class="matrix">
+    <div class="panel weights" id="weights"></div>
+    <div class="panel" style="display:grid;gap:12px">
+      <div class="row" style="justify-content:space-between">
+        <h3>Atractivo frente a facilidad de entrada</h3>
+        <div class="legend" id="legend"></div>
+      </div>
+      <div class="chart-wrap"><svg id="bubble" viewBox="0 0 680 430" width="100%" style="min-width:520px" role="img" aria-label="Gráfico de burbujas de mercados"></svg></div>
+      <p class="muted" style="font-size:.82rem">Tamaño de burbuja: mercado de chicle estimado (€). Arriba a la derecha: prioridad. Pulsa una burbuja para abrir su ficha.</p>
+    </div>
+  </div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>#</th><th>Mercado</th><th>Puntuación</th><th class="r">Atractivo</th><th class="r">Facilidad</th><th class="r">Mercado est.</th><th>Vía recomendada</th></tr></thead>
+      <tbody id="rank"></tbody>
+    </table>
+  </div>
+</section>
+
+<!-- FICHA PAÍS -->
+<section class="view" id="v-pais" data-view="pais" hidden>
+  <div class="country-top">
+    <div class="head">
+      <div class="eyebrow">Ficha país</div>
+      <h2 id="c-title">Portugal</h2>
+      <p id="c-sum"></p>
+    </div>
+    <div class="field"><label for="c-select">Mercado</label><select id="c-select"></select></div>
+  </div>
+  <div class="score-strip" id="c-scores"></div>
+  <div class="grid2">
+    <div class="panel" style="display:grid;gap:14px">
+      <h3>Por dónde entrar</h3>
+      <p id="c-entry"></p>
+      <div><div class="eyebrow" style="margin-bottom:6px">Cadenas y canales objetivo</div><div class="chips" id="c-retail"></div></div>
+      <div><div class="eyebrow" style="margin-bottom:6px">Competencia principal</div><p id="c-comp" class="muted"></p></div>
+    </div>
+    <div class="panel" style="display:grid;gap:14px">
+      <h3>A vigilar</h3>
+      <ul class="list" id="c-watch"></ul>
+      <div class="row"><button class="btn primary" id="c-sim">Simular este mercado</button></div>
+    </div>
+  </div>
+  <div class="panel" style="display:grid;gap:14px">
+    <div class="row" style="justify-content:space-between"><h3>Datos del mercado (editables)</h3><button class="btn" id="c-reset">Restaurar estimaciones</button></div>
+    <div class="fields" id="c-fields"></div>
+    <p class="muted" style="font-size:.82rem">Los cambios se guardan en este navegador y recalculan la matriz. Escalas 1–5: 5 = mejor logística, más afinidad de idioma, regulación más sencilla, competencia más intensa.</p>
+  </div>
+</section>
+
+<!-- SIMULADOR -->
+<section class="view" id="v-simulador" data-view="simulador" hidden>
+  <div class="head">
+    <div class="eyebrow">Simulador de entrada · 36 meses</div>
+    <h2 id="s-title">¿Cuándo recupera la inversión?</h2>
+    <p>Cuenta de resultados del proyecto de exportación, mes a mes. Los valores por defecto son supuestos razonables del sector; cámbialos por vuestros costes reales.</p>
+  </div>
+  <div class="sim">
+    <div class="panel" style="display:grid;gap:14px">
+      <div class="row" style="justify-content:space-between">
+        <div class="seg" role="group" aria-label="Modelo">
+          <button id="s-pl" data-model="pl">Marca blanca</button><button id="s-own" data-model="own">Marca propia</button>
+        </div>
+      </div>
+      <div class="field"><label for="s-country">Mercado</label><select id="s-country"></select></div>
+      <div class="fields" id="s-fields"></div>
+      <button class="btn" id="s-reset">Restaurar supuestos</button>
+    </div>
+    <div style="display:grid;gap:16px;min-width:0">
+      <div class="results" id="s-results"></div>
+      <div class="panel" style="display:grid;gap:10px">
+        <h3>Resultado acumulado del proyecto</h3>
+        <div class="chart-wrap"><svg id="s-chart" viewBox="0 0 680 280" width="100%" style="min-width:480px" role="img" aria-label="Resultado acumulado mensual"></svg></div>
+      </div>
+      <div class="panel" id="s-insight" style="display:grid;gap:8px"></div>
+    </div>
+  </div>
+</section>
+
+<!-- CLAIMS -->
+<section class="view" id="v-claims" data-view="claims" hidden>
+  <div class="head">
+    <div class="eyebrow">Cumplimiento · Reglamento (CE) 1924/2006 y (UE) 432/2012</div>
+    <h2>Los claims de vuestra web, revisados</h2>
+    <p>En la UE solo pueden usarse declaraciones de salud incluidas en el registro europeo, con su redacción y condiciones. Antes de presentar la marca a una cadena extranjera, su departamento de calidad revisará exactamente esto.</p>
+  </div>
+  <div class="callout bad"><b>Dos de los seis beneficios de la home no son claims autorizados</b> (estrés/ansiedad y concentración). Citar estudios no los convierte en válidos. Es un riesgo para la marca propia y una objeción segura en una homologación. Esto es orientación, no asesoramiento jurídico: validadlo con vuestro responsable regulatorio.</div>
+  <div class="panel" style="padding:0" id="claims-list"></div>
+  <div class="grid2">
+    <div class="panel" style="display:grid;gap:10px">
+      <h3>Comprobar un texto nuevo</h3>
+      <p class="muted" style="font-size:.9rem">Pega copy de packaging, web o una ficha de producto. Se marcan las frases que coinciden con claims conocidos.</p>
+      <textarea id="claim-in">Chicle sin azúcar con vitamina B12. Te da energía, ayuda a concentrarte y contribuye a mantener la mineralización de los dientes.</textarea>
+      <div id="claim-out" style="display:grid;gap:8px"></div>
+    </div>
+    <div class="panel" style="display:grid;gap:10px">
+      <h3>Etiquetado que piden todos los mercados UE</h3>
+      <ul class="list">
+        <li><b>«Sin azúcar»</b>: máximo 0,5 g de azúcares por 100 g (declaración nutricional, Reg. 1924/2006).</li>
+        <li><b>Polialcoholes &gt;10%</b>: «un consumo excesivo puede producir efectos laxantes» (Reg. 1169/2011, anexo III).</li>
+        <li><b>Aspartamo</b>: «contiene una fuente de fenilalanina».</li>
+        <li><b>Edulcorantes</b>: «con edulcorante(s)» junto a la denominación.</li>
+        <li><b>Idioma</b>: etiqueta en la lengua oficial de cada país (Bélgica y Suiza: varias).</li>
+        <li><b>Fuera de la UE</b>: Reino Unido usa su propio registro GB; EE. UU. permite «does not promote tooth decay» (21 CFR 101.80); México exige sellos frontales NOM-051 («Contiene edulcorantes, no recomendable en niños»); el Golfo pide certificado halal y etiqueta en árabe.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- HOJA DE RUTA -->
+<section class="view" id="v-ruta" data-view="ruta" hidden>
+  <div class="head">
+    <div class="eyebrow">Plan de 18 meses · nov 2026 – abr 2028</div>
+    <h2>Hoja de ruta de expansión</h2>
+    <p>Secuencia recomendada: primero ordenar la casa (claims, certificaciones, dossier), después vender capacidad a cadenas cercanas y, con caja y referencias, pilotar la marca propia.</p>
+  </div>
+  <div class="panel" style="display:grid;gap:8px">
+    <div class="row" style="justify-content:space-between"><b>Progreso</b><span class="num muted" id="r-pct">0%</span></div>
+    <div class="progress"><i id="r-bar" style="width:0%"></i></div>
+  </div>
+  <div class="phases" id="phases"></div>
+</section>
+
+<!-- FUENTES -->
+<section class="view" id="v-fuentes" data-view="fuentes" hidden>
+  <div class="head">
+    <div class="eyebrow">Fuentes y método</div>
+    <h2>De dónde sale cada dato</h2>
+    <p>Datos de empresa: prensa económica. Datos de mercado europeo: informes públicos. Datos por país: estimaciones orientativas de Claude a partir de esas referencias, marcadas como tales y editables.</p>
+  </div>
+  <div class="panel"><ol class="sources">
+    <li><a href="https://chic-kles.com/" target="_blank" rel="noopener">chic-kles.com</a>: gama, sabores, idiomas y beneficios declarados.</li>
+    <li><a href="https://www.alimarket.es/alimentacion/noticia_amp/412223/chic-kles-gum-engrosa-su-negocio-a-pesar-de-abandonar-una-categoria" target="_blank" rel="noopener">Alimarket, jul. 2025</a>: ventas 2024, beneficio, inversión, plantilla, salida de golosinas.</li>
+    <li><a href="https://elespanol.com/valencia/economia/20241014/empresa-detras-chicles-marca-blanca-hacendado-mercadona-trt/893410780_0.amp.html" target="_blank" rel="noopener">El Español, oct. 2024</a>: relación con Mercadona, Deliplus Energy y B12.</li>
+    <li><a href="https://www.mercasa.es/wp-content/uploads/2026/02/caramelos.pdf" target="_blank" rel="noopener">Mercasa, Alimentación en España (2026)</a>: chicle ≈15,8% de 1.500 M€ del sector en España; exportaciones de caramelos y chicles 794 M€, con EE. UU., Francia, Alemania, Reino Unido y Portugal como destinos principales.</li>
+    <li><a href="https://www.marketdataforecast.com/market-reports/europe-chewing-gum-market" target="_blank" rel="noopener">Market Data Forecast</a>: chicle en Europa 5.630 M$ (2025), sin azúcar 59,3%, súper/híper 49,8%, e-commerce +11,2% anual.</li>
+    <li><a href="https://www.plmainternational.com/article/private-label-sales-and-shares-surge-across-europe" target="_blank" rel="noopener">PLMA / NielsenIQ 2025</a>: marca de distribuidor 38,7% en 17 países; Suiza 52,3%; España +1,1 pts.</li>
+    <li><a href="https://www.theportugalnews.com/news/2026-07-22/mercadona-to-open-new-supermarket-in-portugal-this-summer-in-setubal-district/1059255" target="_blank" rel="noopener">The Portugal News, jul. 2026</a>: Mercadona Portugal, 74 tiendas y 2.090 M€ en 2025.</li>
+    <li><a href="https://www.foodprocessing.com/business-of-food-beverage/mergers-acquisitions/news/33012604/mondelez-sells-us-canada-europe-gum-business-to-perfetti-van-melle-group" target="_blank" rel="noopener">Food Processing</a>: venta del chicle de Mondelez en mercados desarrollados a Perfetti Van Melle.</li>
+    <li><a href="https://www.confectionerynews.com/Article/2011/04/14/Lots-to-chew-on-for-R-D-teams-as-gum-claims-backed-by-EFSA/" target="_blank" rel="noopener">ConfectioneryNews / EFSA</a> y <a href="https://eur-lex.europa.eu/eli/reg/2011/665/oj" target="_blank" rel="noopener">Reg. (UE) 665/2011</a>: claims de chicle sin azúcar.</li>
+  </ol></div>
+  <div class="panel" style="display:grid;gap:8px">
+    <h3>Cómo se calcula la puntuación</h3>
+    <p class="muted">Cada variable se normaliza de 0 a 100 entre los 16 mercados (el tamaño en escala logarítmica, para que EE. UU. no aplaste al resto). Atractivo y facilidad son medias ponderadas con los pesos de la pestaña Mercados; la puntuación final es su media. En modo marca propia, una cuota alta de marca blanca resta en lugar de sumar, y una relación comercial existente suma 8 puntos de facilidad.</p>
+  </div>
+  <div class="row"><button class="btn" id="reset-all">Borrar todos mis cambios</button><span class="muted" id="reset-msg" style="font-size:.85rem"></span></div>
+</section>
+</main>
+<footer><div class="wrap">Preparado para Chic-kles Gum · Datos públicos a octubre de 2026 · Estimaciones editables, no auditadas.</div></footer>
+
+<script>
+(function(){
+const REG = {ue:{n:"UE",c:"--r1"}, eur:{n:"Europa no UE",c:"--r2"}, am:{n:"América",c:"--r3"}, mena:{n:"Oriente Medio y Magreb",c:"--r4"}};
+// Estimaciones orientativas. mercado = venta minorista de chicle, M€/año. tend = % anual. sa = % sin azúcar. mdd = % marca distribuidor (gran consumo).
+// log, idioma, reg: 1-5 (5 mejor). comp: 1-5 (5 más intensa). rel: relación comercial existente.
+const BASE = [
+ {id:"PT",n:"Portugal",r:"ue",mercado:45,tend:2,sa:75,mdd:40,log:5,idioma:5,reg:5,comp:3,rel:true,
+  via:{pl:"Ampliar con Mercadona PT y ofrecer a Continente / Pingo Doce",own:"Piloto de marca en farmacia, gasolineras y Mercadona PT"},
+  retail:["Mercadona PT (74 tiendas)","Continente (Sonae)","Pingo Doce (Jerónimo Martins)","Lidl PT","Intermarché","Galp / Repsol tiendas","Farmacias"],
+  compet:"Mars Wrigley (Orbit, Extra), Perfetti (Trident, Mentos), marca blanca de Continente y Pingo Doce.",
+  watch:["Mercadona crece rápido (12 aperturas en 2026): la vía más barata es ampliar surtido con el cliente actual.","Mercado pequeño: sirve como laboratorio de marca propia, no como motor de volumen.","La web ya está en portugués: revisad claims antes de cualquier campaña."]},
+ {id:"FR",n:"Francia",r:"ue",mercado:480,tend:-2,sa:90,mdd:33,log:5,idioma:3,reg:5,comp:4,
+  via:{pl:"Licitaciones de marca propia en Leclerc, Intermarché, Lidl y Aldi",own:"Solo vía nicho: parafarmacia o bio"},
+  retail:["E.Leclerc (Marque Repère)","Carrefour","Intermarché","Système U","Lidl FR","Aldi FR","Parafarmacias"],
+  compet:"Perfetti (Hollywood, Mentos), Mars Wrigley (Freedent, Airwaves).",
+  watch:["Categoría en declive desde hace una década: competid por cuota de MDD, no por crecimiento.","Compradores muy centrados en precio; preparad costes por referencia muy afinados.","IVA de confitería al tipo general: revisad el PVP objetivo."]},
+ {id:"IT",n:"Italia",r:"ue",mercado:520,tend:-1,sa:80,mdd:31,log:4,idioma:4,reg:5,comp:5,
+  via:{pl:"Discounters (Eurospin, Lidl IT) y Coop / Conad",own:"Poco recomendable: casa de Perfetti"},
+  retail:["Coop Italia","Conad","Esselunga","Eurospin","Lidl IT","Selex","Tabaccherie"],
+  compet:"Perfetti Van Melle (Vivident, Brooklyn, Mentos, Daygum) con fuerte posición local; Mars Wrigley.",
+  watch:["El canal tabacos y bares pesa mucho en chicle: difícil para una marca nueva.","Eurospin y Lidl abren la puerta más rápida en marca blanca.","Feria de referencia: TuttoFood / Cibus."]},
+ {id:"DE",n:"Alemania",r:"ue",mercado:700,tend:1,sa:85,mdd:38,log:4,idioma:2,reg:5,comp:5,
+  via:{pl:"Aldi Süd/Nord, Lidl, Kaufland, Rewe (ja!), Edeka, dm y Rossmann",own:"Droguerías (dm, Rossmann) con sabores funcionales"},
+  retail:["Aldi Süd","Aldi Nord","Lidl","Kaufland","Rewe","Edeka","dm","Rossmann"],
+  compet:"Mars Wrigley (Extra, Orbit, Airwaves) domina; Perfetti (Mentos, Stimorol).",
+  watch:["Mayor mercado de chicle de Europa y gran comprador de marca blanca: pieza clave del camino A.","Las droguerías venden mucho chicle funcional y tienen marcas propias (Balea, Isana, etc.).","Exigen IFS Food en nivel superior y auditorías sociales. Feria: ISM Colonia (ene/feb)."]},
+ {id:"UK",n:"Reino Unido",r:"eur",mercado:330,tend:-3,sa:90,mdd:47,log:3,idioma:4,reg:4,comp:5,
+  via:{pl:"Aldi UK, Lidl GB, Tesco y Sainsbury's",own:"No recomendable a corto plazo"},
+  retail:["Tesco","Sainsbury's","Asda","Aldi UK","Lidl GB","Boots","Co-op"],
+  compet:"Mars Wrigley (Extra) muy dominante; Perfetti (Mentos, Trident).",
+  watch:["Categoría en caída sostenida.","Post-Brexit: importador con dirección en GB, registro GB de claims, aduanas y BRCGS.","La web ya está en inglés, útil para presentar el dossier de capacidad."]},
+ {id:"PL",n:"Polonia",r:"ue",mercado:260,tend:2,sa:85,mdd:36,log:3,idioma:2,reg:5,comp:4,
+  via:{pl:"Biedronka (Jerónimo Martins), Lidl PL, Żabka, Dino",own:"Conveniencia (Żabka) con distribuidor"},
+  retail:["Biedronka","Lidl PL","Żabka","Dino","Kaufland PL","Rossmann PL","Auchan PL"],
+  compet:"Mars Wrigley (Orbit) con cuota muy alta; Perfetti (Mentos).",
+  watch:["Cultura de chicle fuerte y cadenas en expansión.","Jerónimo Martins compra para Biedronka y Pingo Doce: una sola relación abre Polonia y Portugal.","Precios unitarios más bajos que en Europa occidental."]},
+ {id:"NL",n:"Países Bajos",r:"ue",mercado:110,tend:0,sa:80,mdd:41,log:4,idioma:3,reg:5,comp:3,
+  via:{pl:"Albert Heijn, Jumbo, Lidl NL, Kruidvat",own:"Online y droguería"},
+  retail:["Albert Heijn","Jumbo","Lidl NL","Aldi NL","Kruidvat","Etos"],
+  compet:"Mars Wrigley, Perfetti (Mentos, de origen neerlandés), marcas blancas fuertes.",
+  watch:["PLMA Ámsterdam (mayo) es la cita clave de marca blanca: reuníos allí con compradores de toda Europa.","Mercado maduro, abierto a innovación y sostenibilidad (base de chicle biodegradable)."]},
+ {id:"BE",n:"Bélgica",r:"ue",mercado:75,tend:0,sa:85,mdd:42,log:4,idioma:3,reg:5,comp:3,
+  via:{pl:"Colruyt, Delhaize, Aldi y Lidl",own:"Poco prioritario"},
+  retail:["Colruyt","Delhaize","Carrefour BE","Aldi BE","Lidl BE"],
+  compet:"Mars Wrigley, Perfetti.",
+  watch:["Etiquetado bilingüe o trilingüe (FR/NL/DE).","Se puede atender junto a Países Bajos."]},
+ {id:"CH",n:"Suiza",r:"eur",mercado:90,tend:0,sa:85,mdd:52,log:3,idioma:3,reg:4,comp:3,
+  via:{pl:"Migros y Coop (las cadenas con más marca propia de Europa)",own:"No prioritario"},
+  retail:["Migros","Coop","Aldi Suisse","Lidl CH","Denner"],
+  compet:"Marcas propias de Migros y Coop, Mars Wrigley, Perfetti.",
+  watch:["Cuota de marca blanca del 52,3%, la más alta de Europa.","Fuera de la UE: aranceles y trámites aduaneros; etiquetado DE/FR/IT.","Precios altos y exigencia de calidad muy alta."]},
+ {id:"NO",n:"Nórdicos",r:"ue",mercado:300,tend:1,sa:90,mdd:33,log:2,idioma:3,reg:4,comp:4,
+  via:{pl:"ICA, Axfood, Coop, Salling, Kesko, S-Group",own:"Sabores con xilitol en Finlandia"},
+  retail:["ICA (SE)","Axfood (SE)","Salling (DK)","Kesko (FI)","S-Group (FI)","NorgesGruppen (NO)"],
+  compet:"Cloetta, Fazer, Mars Wrigley, Perfetti; xilitol muy arraigado en Finlandia.",
+  watch:["Agrupa Suecia, Dinamarca, Finlandia y Noruega (Noruega fuera de la UE).","Distancia logística alta desde Valencia.","Consumidor muy receptivo a xilitol y claims dentales."]},
+ {id:"CZ",n:"Rep. Checa",r:"ue",mercado:70,tend:2,sa:75,mdd:30,log:3,idioma:2,reg:5,comp:3,
+  via:{pl:"Kaufland, Lidl, Albert, Penny",own:"Con distribuidor regional (CZ + SK)"},
+  retail:["Kaufland CZ","Lidl CZ","Albert","Penny","Billa","Tesco CZ"],
+  compet:"Mars Wrigley, Perfetti.",
+  watch:["Compras a menudo centralizadas en Alemania o Austria (Schwarz, Rewe)."]},
+ {id:"RO",n:"Rumanía",r:"ue",mercado:75,tend:4,sa:60,mdd:18,log:2,idioma:3,reg:5,comp:3,
+  via:{pl:"Kaufland, Lidl, Carrefour, Mega Image",own:"Marca propia con distribuidor"},
+  retail:["Kaufland RO","Lidl RO","Carrefour RO","Mega Image","Profi"],
+  compet:"Mars Wrigley, Perfetti, importaciones de Turquía.",
+  watch:["Crecimiento alto y marca blanca todavía baja: más hueco para una marca nueva a buen precio.","Distribución tradicional relevante."]},
+ {id:"MA",n:"Marruecos",r:"mena",mercado:60,tend:5,sa:30,mdd:5,log:4,idioma:4,reg:3,comp:2,
+  via:{pl:"Poco relevante (MDD casi inexistente)",own:"Distribuidor nacional + Marjane, Carrefour y BIM"},
+  retail:["Marjane","Carrefour (LabelVie)","BIM","Comercio tradicional","Gasolineras"],
+  compet:"Marcas internacionales e importaciones de bajo precio.",
+  watch:["Cerca por mar desde Valencia; mucho comercio tradicional.","El sin azúcar todavía es minoritario: hay que educar al consumidor.","Etiquetado en árabe y francés; registro ONSSA."]},
+ {id:"US",n:"Estados Unidos",r:"am",mercado:3800,tend:2,sa:70,mdd:21,log:1,idioma:3,reg:2,comp:5,
+  via:{pl:"Copacking para cadenas (Aldi US, Trader Joe's)",own:"Test en Amazon con sabores diferenciales"},
+  retail:["Walmart","Kroger","Costco","Aldi US","Trader Joe's","Dollar General","Amazon"],
+  compet:"Mars Wrigley (Extra, Orbit, 5), Perfetti (Trident, Dentyne), Hershey (Ice Breakers).",
+  watch:["Primer destino de las exportaciones españolas de caramelos y chicles.","FDA: etiqueta Nutrition Facts, registro de instalación y FSMA.","Aranceles y costes logísticos altos; mejor entrar por e-commerce o copacking."]},
+ {id:"MX",n:"México",r:"am",mercado:650,tend:4,sa:35,mdd:12,log:1,idioma:5,reg:2,comp:4,
+  via:{pl:"Poco relevante",own:"Distribuidor + OXXO y Walmart de México"},
+  retail:["OXXO","Walmart de México","Soriana","Chedraui","7-Eleven MX"],
+  compet:"Mondelez conserva el chicle en mercados emergentes (Trident, Clorets); Canel's; Mars Wrigley.",
+  watch:["Mismo idioma y cultura de chicle muy arraigada.","Sellos frontales NOM-051: los edulcorantes llevan leyenda de advertencia.","Distancia y aranceles: valorar fabricación local a medio plazo."]},
+ {id:"AE",n:"Golfo (EAU + KSA)",r:"mena",mercado:250,tend:5,sa:50,mdd:10,log:2,idioma:2,reg:3,comp:3,
+  via:{pl:"Carrefour (Majid Al Futtaim) y Lulu",own:"Importador-distribuidor con certificado halal"},
+  retail:["Carrefour MAF","Lulu","Spinneys","Panda","Tamimi"],
+  compet:"Mars Wrigley, Perfetti, Lotte.",
+  watch:["Certificado halal de toda la receta (glicerina, base de goma).","Etiquetado en árabe y normas GSO.","Poder adquisitivo alto y crecimiento de la categoría."]}
+];
+const W_DEF = {
+  pl:{tam:30,crec:15,sa:15,mdd:40,log:35,idioma:10,reg:30,comp:25},
+  own:{tam:25,crec:25,sa:25,mdd:25,log:20,idioma:30,reg:20,comp:30}
+};
+const W_LABEL = {tam:"Tamaño del mercado",crec:"Crecimiento",sa:"Peso del sin azúcar",mdd:"Marca blanca",log:"Logística desde Valencia",idioma:"Idioma y afinidad",reg:"Facilidad regulatoria",comp:"Competencia (menos es mejor)"};
+const SIM_DEF = {
+  pl:{exw:0.55,cv:0.36,tiendas:800,rot:35,ramp:4,setup:40000,fijo:90000},
+  own:{pvp:1.79,iva:21,mret:30,mdist:22,cv:0.40,tiendas:600,rot:8,ramp:6,listing:120,trade:10,mkt:120000}
+};
+const LOGCOST = [0.15,0.11,0.07,0.05,0.035];
+
+// ---------- state ----------
+const KEY="ckx-radar-v1";
+let S = {model:"pl", w:JSON.parse(JSON.stringify(W_DEF)), over:{}, sim:JSON.parse(JSON.stringify(SIM_DEF)), simLog:{}, country:"PT", simCountry:"PT", tasks:{}};
+try{const raw=localStorage.getItem(KEY); if(raw){const p=JSON.parse(raw); S=Object.assign(S,p);}}catch(e){}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+const $=s=>document.querySelector(s);
+const fmt=(n,d=0)=>n.toLocaleString("es-ES",{minimumFractionDigits:d,maximumFractionDigits:d});
+const eur=n=>{const a=Math.abs(n);const s=n<0?"−":"";if(a>=1e6)return s+fmt(a/1e6,2)+" M€";if(a>=1e3)return s+fmt(a/1e3,0)+" k€";return s+fmt(a,0)+" €"};
+const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+function C(id){const b=BASE.find(x=>x.id===id);return Object.assign({},b,S.over[id]||{});}
+function all(){return BASE.map(b=>C(b.id));}
+
+// ---------- scoring ----------
+function score(){
+  const L=all(), m=S.model, w=S.w[m];
+  const rng=(f)=>{const v=L.map(f);return [Math.min(...v),Math.max(...v)]};
+  const n=(v,[a,b])=>b===a?50:(v-a)/(b-a)*100;
+  const rT=rng(c=>Math.log10(c.mercado)), rC=rng(c=>c.tend), rS=rng(c=>c.sa), rM=rng(c=>c.mdd);
+  return L.map(c=>{
+    const mddN = m==="pl"? n(c.mdd,rM) : 100-n(c.mdd,rM);
+    const a = (w.tam*n(Math.log10(c.mercado),rT)+w.crec*n(c.tend,rC)+w.sa*n(c.sa,rS)+w.mdd*mddN)/Math.max(1,(w.tam+w.crec+w.sa+w.mdd));
+    let f = (w.log*(c.log-1)*25+w.idioma*(c.idioma-1)*25+w.reg*(c.reg-1)*25+w.comp*(5-c.comp)*25)/Math.max(1,(w.log+w.idioma+w.reg+w.comp));
+    if(c.rel) f=Math.min(100,f+8);
+    return Object.assign(c,{atr:a,fac:f,tot:(a+f)/2});
+  }).sort((x,y)=>y.tot-x.tot);
+}
+
+// ---------- model switch ----------
+function setModel(m){S.model=m;save();
+  document.querySelectorAll("[data-model]").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.model===m)));
+  renderAll();}
+document.querySelectorAll("[data-model]").forEach(b=>b.addEventListener("click",()=>setModel(b.dataset.model)));
+
+// ---------- weights ----------
+function renderWeights(){
+  const w=S.w[S.model];
+  const grp=(t,keys)=>`<div class="wgroup"><div class="eyebrow">${t}</div>${keys.map(k=>`<div class="wrow"><label for="w-${k}">${W_LABEL[k]}</label><span class="num" id="wv-${k}">${w[k]}</span><input type="range" id="w-${k}" min="0" max="50" step="5" value="${w[k]}" data-k="${k}"></div>`).join("")}</div>`;
+  $("#weights").innerHTML = `<div class="row" style="justify-content:space-between"><h3>Pesos</h3><span class="tag ${S.model}">${S.model==="pl"?"Marca blanca":"Marca propia"}</span></div>`+grp("Atractivo",["tam","crec","sa","mdd"])+grp("Facilidad",["log","idioma","reg","comp"])+`<button class="btn" id="w-reset">Restaurar pesos</button>`;
+  $("#weights").querySelectorAll("input").forEach(i=>i.addEventListener("input",e=>{const k=e.target.dataset.k;S.w[S.model][k]=+e.target.value;$("#wv-"+k).textContent=e.target.value;save();renderMatrix();}));
+  $("#w-reset").addEventListener("click",()=>{S.w[S.model]=JSON.parse(JSON.stringify(W_DEF[S.model]));save();renderWeights();renderMatrix();});
+}
+
+// ---------- matrix ----------
+function renderMatrix(){
+  const L=score();
+  $("#legend").innerHTML=Object.values(REG).map(r=>`<span><i style="background:var(${r.c})"></i>${r.n}</span>`).join("");
+  const W=680,H=430,p={l:46,r:20,t:16,b:40}, iw=W-p.l-p.r, ih=H-p.t-p.b;
+  const x=v=>p.l+v/100*iw, y=v=>p.t+(1-v/100)*ih;
+  const maxM=Math.max(...L.map(c=>c.mercado));
+  let g=`<rect x="${x(50)}" y="${y(100)}" width="${iw/2}" height="${ih/2}" fill="var(--accent-soft)" opacity=".55"/>`;
+  for(let t=0;t<=100;t+=25){g+=`<line x1="${x(t)}" x2="${x(t)}" y1="${y(0)}" y2="${y(100)}" stroke="var(--line)"/><line x1="${x(0)}" x2="${x(100)}" y1="${y(t)}" y2="${y(t)}" stroke="var(--line)"/><text x="${x(t)}" y="${H-p.b+16}" text-anchor="middle">${t}</text><text x="${p.l-8}" y="${y(t)+4}" text-anchor="end">${t}</text>`;}
+  g+=`<text x="${x(50)}" y="${H-6}" text-anchor="middle" style="font-size:11px;letter-spacing:.08em">FACILIDAD DE ENTRADA →</text>`;
+  g+=`<text transform="translate(12 ${y(50)}) rotate(-90)" text-anchor="middle" style="font-size:11px;letter-spacing:.08em">ATRACTIVO →</text>`;
+  g+=`<text x="${x(98)}" y="${y(97)}" text-anchor="end" style="fill:var(--accent);font-weight:500">Prioridad</text>`;
+  const sorted=[...L].sort((a,b)=>b.mercado-a.mercado);
+  sorted.forEach(c=>{const r=6+Math.sqrt(c.mercado/maxM)*30;
+    g+=`<g class="bub" data-id="${c.id}" style="cursor:pointer" tabindex="0" role="button" aria-label="${c.n}"><circle cx="${x(c.fac)}" cy="${y(c.atr)}" r="${r}" fill="var(${REG[c.r].c})" fill-opacity=".28" stroke="var(${REG[c.r].c})" stroke-width="1.5"/><text x="${x(c.fac)}" y="${y(c.atr)+4}" text-anchor="middle" style="fill:var(--ink);font-weight:500">${c.id}</text><title>${c.n}: atractivo ${fmt(c.atr)}, facilidad ${fmt(c.fac)}</title></g>`;});
+  $("#bubble").innerHTML=g;
+  $("#bubble").querySelectorAll(".bub").forEach(b=>{const go=()=>{S.country=b.dataset.id;save();location.hash="pais"};b.addEventListener("click",go);b.addEventListener("keydown",e=>{if(e.key==="Enter")go()})});
+  $("#rank").innerHTML=L.map((c,i)=>`<tr class="click" data-id="${c.id}"><td class="num muted">${i+1}</td><td><span class="code">${c.id}</span><b>${c.n}</b>${c.rel?' <span class="tag pl" style="margin-left:6px">Cliente actual</span>':""}</td><td><div class="bar"><span><i style="width:${c.tot}%"></i></span><b class="num">${fmt(c.tot)}</b></div></td><td class="r num">${fmt(c.atr)}</td><td class="r num">${fmt(c.fac)}</td><td class="r num">${fmt(c.mercado)} M€</td><td style="min-width:240px">${c.via[S.model]}</td></tr>`).join("");
+  $("#rank").querySelectorAll("tr").forEach(tr=>tr.addEventListener("click",()=>{S.country=tr.dataset.id;save();location.hash="pais"}));
+}
+
+// ---------- country ----------
+const FIELDS=[["mercado","Mercado de chicle (M€)",1,"Venta minorista estimada"],["tend","Crecimiento anual (%)",0.5,""],["sa","Sin azúcar (% del chicle)",1,""],["mdd","Marca blanca (% gran consumo)",1,""],["log","Logística (1–5)",1,"5 = muy cerca"],["idioma","Idioma y afinidad (1–5)",1,""],["reg","Facilidad regulatoria (1–5)",1,""],["comp","Competencia (1–5)",1,"5 = muy intensa"]];
+function renderCountrySelects(){
+  const opts=BASE.map(b=>`<option value="${b.id}">${b.n}</option>`).join("");
+  $("#c-select").innerHTML=opts;$("#s-country").innerHTML=opts;
+}
+function renderCountry(){
+  const L=score(), c=L.find(x=>x.id===S.country)||L[0], rank=L.indexOf(c)+1;
+  $("#c-select").value=c.id;
+  $("#c-title").textContent=c.n;
+  const verdict = c.tot>=60?["ok","Prioridad alta"]:c.tot>=45?["warn","Prioridad media"]:["neutral","Prioridad baja"];
+  $("#c-sum").innerHTML=`<span class="tag ${verdict[0]}">${verdict[1]}</span> &nbsp;Puesto ${rank} de ${L.length} con el modelo <b>${S.model==="pl"?"marca blanca":"marca propia"}</b>. ${REG[c.r].n}.`;
+  $("#c-scores").innerHTML=[["Puntuación",fmt(c.tot)],["Atractivo",fmt(c.atr)],["Facilidad",fmt(c.fac)],["Mercado est.",fmt(c.mercado)+" M€"],["Sin azúcar",fmt(c.sa)+"%"],["Marca blanca",fmt(c.mdd)+"%"]].map(([l,v])=>`<div><span class="eyebrow">${l}</span><span class="v num">${v}</span></div>`).join("");
+  $("#c-entry").innerHTML=`<span class="tag pl">Marca blanca</span> ${c.via.pl}<br><span class="tag own" style="margin-top:8px">Marca propia</span> ${c.via.own}`;
+  $("#c-retail").innerHTML=c.retail.map(r=>`<span class="chip">${r}</span>`).join("");
+  $("#c-comp").textContent=c.compet;
+  $("#c-watch").innerHTML=c.watch.map(w=>`<li>${w}</li>`).join("");
+  $("#c-fields").innerHTML=FIELDS.map(([k,l,st,h])=>`<div class="field"><label for="f-${k}">${l}</label><input id="f-${k}" type="number" step="${st}" value="${c[k]}" data-k="${k}">${h?`<span class="hint">${h}</span>`:""}</div>`).join("");
+  $("#c-fields").querySelectorAll("input").forEach(i=>i.addEventListener("change",e=>{
+    let v=parseFloat(e.target.value); if(isNaN(v))return; const k=e.target.dataset.k;
+    if(["log","idioma","reg","comp"].includes(k)) v=Math.min(5,Math.max(1,Math.round(v)));
+    if(k==="mercado") v=Math.max(1,v);
+    S.over[c.id]=Object.assign({},S.over[c.id]||{},{[k]:v}); save(); renderCountry(); renderMatrix();
+  }));
+}
+$("#c-select").addEventListener("change",e=>{S.country=e.target.value;save();renderCountry();});
+$("#c-reset").addEventListener("click",()=>{delete S.over[S.country];save();renderCountry();renderMatrix();});
+$("#c-sim").addEventListener("click",()=>{S.simCountry=S.country;save();location.hash="simulador";});
+
+// ---------- simulator ----------
+const SF={
+  pl:[["exw","Precio ex-fábrica (€/ud)",0.01],["cv","Coste variable (€/ud)",0.01],["log","Logística (€/ud)",0.005],["tiendas","Tiendas objetivo",10],["rot","Uds/tienda/semana (toda la gama)",0.5],["ramp","Meses de despliegue",1],["setup","Inversión inicial (€)",1000],["fijo","Coste comercial fijo/año (€)",1000]],
+  own:[["pvp","PVP con IVA (€/ud)",0.01],["iva","IVA (%)",1],["mret","Margen retailer (%)",1],["mdist","Margen distribuidor (%)",1],["cv","Coste variable (€/ud)",0.01],["log","Logística (€/ud)",0.005],["tiendas","Tiendas objetivo",10],["rot","Uds/tienda/semana (toda la gama)",0.5],["ramp","Meses de despliegue",1],["listing","Referenciación (€/tienda)",10],["trade","Trade marketing (% ventas)",1],["mkt","Marketing fijo/año (€)",1000]]
+};
+function simParams(){const m=S.model,c=C(S.simCountry);const p=Object.assign({},S.sim[m]);
+  const lk=S.simCountry; p.log = (S.simLog[lk]!=null)?S.simLog[lk]:LOGCOST[c.log-1]; return p;}
+function runSim(p,m){
+  const months=[];let cum=0,prevStores=0,be=null,wasNeg=false,tu=0;const yr=[0,0,0],yc=[0,0,0];
+  for(let i=1;i<=36;i++){
+    const g=i<=12?1:i<=24?1.15:1.3;
+    const stores=p.tiendas*Math.min(1,i/Math.max(1,p.ramp))*g;
+    const units=stores*p.rot*4.33;
+    let net,rev,cost;
+    if(m==="pl"){net=p.exw;rev=units*net;cost=units*(p.cv+p.log)+p.fijo/12+(i===1?p.setup:0);}
+    else{const ex=p.pvp/(1+p.iva/100);const ret=ex*(1-p.mret/100);net=ret*(1-p.mdist/100);rev=units*net;
+      const newSt=Math.max(0,stores-prevStores);cost=units*(p.cv+p.log)+rev*p.trade/100+p.mkt/12+newSt*p.listing;}
+    prevStores=stores;tu+=units;const res=rev-cost;cum+=res;const y=Math.floor((i-1)/12);yr[y]+=rev;yc[y]+=units*(net-p.cv-p.log);
+    if(cum<0)wasNeg=true; if(be===null&&wasNeg&&cum>=0)be=i;
+    months.push({i,rev,res,cum,net});
+  }
+  return {months,cum,be,yr,yc,net:months[0].net,units:tu};
+}
+function renderSimFields(){
+  const m=S.model,p=simParams();
+  $("#s-pl").setAttribute("aria-pressed",String(m==="pl"));$("#s-own").setAttribute("aria-pressed",String(m==="own"));
+  $("#s-country").value=S.simCountry;
+  $("#s-fields").innerHTML=SF[m].map(([k,l,st])=>`<div class="field"><label for="s-${k}">${l}</label><input id="s-${k}" type="number" step="${st}" min="0" value="${+p[k].toFixed(3)}" data-k="${k}"></div>`).join("");
+  $("#s-fields").querySelectorAll("input").forEach(i=>i.addEventListener("input",e=>{const v=parseFloat(e.target.value);if(isNaN(v))return;const k=e.target.dataset.k;
+    if(k==="log")S.simLog[S.simCountry]=v;else S.sim[S.model][k]=v;save();renderSimOut();}));
+}
+function renderSimOut(){
+  const m=S.model,p=simParams(),c=C(S.simCountry),R=runSim(p,m);
+  $("#s-title").textContent=`${c.n} · ${m==="pl"?"marca blanca":"marca propia"}`;
+  const mc=R.yr[2]?R.yc[2]/R.yr[2]*100:0;
+  const cell=(l,v,cls="")=>`<div><span class="eyebrow">${l}</span><span class="v num ${cls}">${v}</span></div>`;
+  $("#s-results").innerHTML=cell("Ventas año 1",eur(R.yr[0]))+cell("Ventas año 3",eur(R.yr[2]))+cell("Precio neto/ud",fmt(R.net,3)+" €")+cell("Margen contrib. año 3",fmt(mc,1)+"%",mc<15?"neg":"")+cell("Acumulado 36 meses",eur(R.cum),R.cum<0?"neg":"pos")+cell("Break-even",R.be?("mes "+R.be):(R.cum>=0&&!R.months.some(x=>x.cum<0)?"desde el mes 1":"no en 36 m"),R.be||R.cum>=0?"":"neg");
+  // chart
+  const W=680,H=280,pd={l:62,r:16,t:14,b:30},iw=W-pd.l-pd.r,ih=H-pd.t-pd.b;
+  const vals=R.months.map(x=>x.cum);let mn=Math.min(0,...vals),mx=Math.max(0,...vals);if(mx===mn)mx=mn+1;const padv=(mx-mn)*.08;mn-=padv;mx+=padv;
+  const x=i=>pd.l+(i-1)/35*iw,y=v=>pd.t+(1-(v-mn)/(mx-mn))*ih;
+  let g="";const ticks=5;for(let t=0;t<=ticks;t++){const v=mn+(mx-mn)*t/ticks;g+=`<line x1="${pd.l}" x2="${W-pd.r}" y1="${y(v)}" y2="${y(v)}" stroke="var(--line)"/><text x="${pd.l-8}" y="${y(v)+4}" text-anchor="end">${eur(v)}</text>`;}
+  [1,12,24,36].forEach(i=>g+=`<text x="${x(i)}" y="${H-8}" text-anchor="middle">m${i}</text>`);
+  [12.5,24.5].forEach(i=>g+=`<line x1="${x(i)}" x2="${x(i)}" y1="${pd.t}" y2="${pd.t+ih}" stroke="var(--line)" stroke-dasharray="3 4"/>`);
+  g+=`<line x1="${pd.l}" x2="${W-pd.r}" y1="${y(0)}" y2="${y(0)}" stroke="var(--muted)" stroke-width="1.2"/>`;
+  const path=R.months.map((d,k)=>(k?"L":"M")+x(d.i).toFixed(1)+" "+y(d.cum).toFixed(1)).join(" ");
+  const col=R.cum>=0?"var(--ok)":"var(--bad)";
+  g+=`<path d="${path} L${x(36)} ${y(0)} L${x(1)} ${y(0)} Z" fill="${col}" fill-opacity=".12"/><path d="${path}" fill="none" stroke="${col}" stroke-width="2.4" stroke-linejoin="round"/>`;
+  const last=R.months[35];g+=`<circle cx="${x(36)}" cy="${y(last.cum)}" r="4.5" fill="${col}"/>`;
+  if(R.be){g+=`<circle cx="${x(R.be)}" cy="${y(R.months[R.be-1].cum)}" r="4" fill="var(--surface)" stroke="var(--ink)" stroke-width="1.5"/><text x="${x(R.be)}" y="${y(R.months[R.be-1].cum)-10}" text-anchor="middle" style="fill:var(--ink)">break-even</text>`;}
+  $("#s-chart").innerHTML=g;
+  // insight: rotation needed to break even at 24 months (linear in rot)
+  const cum24=r=>{const q=Object.assign({},p,{rot:r});return runSim(q,m).months[23].cum};
+  const a0=cum24(0),a1=cum24(1),slope=a1-a0;const need=slope>0?-a0/slope:Infinity;
+  const unitMargin=R.net-p.cv-p.log;
+  let msg=`<h3>Lectura rápida</h3>`;
+  if(unitMargin<=0){msg+=`<p><span class="tag bad">Margen unitario negativo</span> Cada unidad pierde ${fmt(-unitMargin,3)} €. Subid precio o bajad coste antes de hablar de volumen.</p>`;}
+  else{msg+=`<p>Cada unidad deja <b class="num">${fmt(unitMargin,3)} €</b> de margen de contribución${m==="own"?" antes de trade marketing":""}. Para recuperar la inversión en 24 meses hace falta una rotación de <b class="num">${isFinite(need)?fmt(need,1):"—"} uds/tienda/semana</b> en ${fmt(p.tiendas)} tiendas (supuesto actual: ${fmt(p.rot,1)}).</p>`;}
+  msg+= m==="own"?`<p class="muted" style="font-size:.88rem">De un PVP de ${fmt(p.pvp,2)} € llegan a fábrica ${fmt(R.net,3)} € (${fmt(R.net/p.pvp*100,0)}%). IVA, retailer y distribuidor se quedan el resto: por eso la marca propia necesita canales con menos intermediarios o venta directa.</p>`
+                  :`<p class="muted" style="font-size:.88rem">En marca blanca la palanca es el coste: 1 céntimo menos de coste variable vale ${eur(R.units*0.01)} en 36 meses (${fmt(R.units/1e6,1)} M de unidades).</p>`;
+  $("#s-insight").innerHTML=msg;
+}
+$("#s-country").addEventListener("change",e=>{S.simCountry=e.target.value;save();renderSimFields();renderSimOut();});
+$("#s-reset").addEventListener("click",()=>{S.sim[S.model]=JSON.parse(JSON.stringify(SIM_DEF[S.model]));delete S.simLog[S.simCountry];save();renderSimFields();renderSimOut();});
+
+// ---------- claims ----------
+const WEB_CLAIMS=[
+ ["ok","Neutraliza los ácidos de la placa","Autorizado (Reg. UE 432/2012): «El chicle sin azúcar contribuye a la neutralización de los ácidos de la placa». Condición: masticar al menos 20 minutos después de comer o beber; indicarlo en la etiqueta."],
+ ["ok","Ayuda a la mineralización de los dientes tras las comidas","Autorizado: «El chicle sin azúcar contribuye al mantenimiento de la mineralización de los dientes». Misma condición de 20 minutos tras comer o beber."],
+ ["ok","Ayuda a reducir la sequedad de boca","Autorizado: «El chicle sin azúcar contribuye a la reducción de la sequedad bucal». Condición: masticar cuando se note la boca seca."],
+ ["neutral","Refresca el aliento","Propiedad sensorial, no es una declaración de salud. Uso habitual en el sector; evitad vincularlo a la eliminación de bacterias o a la halitosis."],
+ ["bad","Reduce el estrés y la ansiedad","No existe ningún claim autorizado en la UE para chicle y estrés o ansiedad. Retiradlo de la web y del packaging, aunque lo respalde un metaanálisis."],
+ ["bad","Ayuda a la concentración","No autorizado para chicle. Solo podría usarse un claim de función cognitiva ligado a un nutriente con claim aprobado (p. ej. ciertas vitaminas) y en la cantidad exigida."]
+];
+const LBL={ok:"Autorizado",neutral:"Sin riesgo",warn:"Con condiciones",bad:"No autorizado"};
+$("#claims-list").innerHTML=WEB_CLAIMS.map(([s,q,d])=>`<div class="claim"><span class="tag ${s}">${LBL[s]}</span><span class="q">«${q}»</span><span class="d">${d}</span></div>`).join("");
+const RULES=[
+ [/mineraliz/i,"ok","Mineralización dental","Autorizado para chicle sin azúcar, con la condición de los 20 minutos tras comer o beber."],
+ [/placa|ácido/i,"ok","Ácidos de la placa","Autorizado para chicle sin azúcar (20 min tras comer o beber). Con carbamida (≥20 mg/pieza) existe un claim reforzado."],
+ [/sequedad|boca seca|saliva/i,"ok","Sequedad bucal","Autorizado para chicle sin azúcar."],
+ [/caries/i,"warn","Reducción de riesgo de caries","Es un claim de reducción de riesgo de enfermedad (art. 14): solo con la redacción exacta autorizada, p. ej. chicle con 100% xilitol (2–3 g, 3 veces al día tras las comidas)."],
+ [/xilitol/i,"warn","Xilitol","Los claims de xilitol exigen que sea el 100% del edulcorante y dosis concretas."],
+ [/aliento|fresc/i,"neutral","Frescor","Descripción sensorial, sin riesgo si no se presenta como efecto sobre la salud."],
+ [/estr[eé]s|ansiedad|relaj|calma/i,"bad","Estrés o ansiedad","Sin claim autorizado en la UE para chicle."],
+ [/concentr|memoria|foco|rendimiento mental|cogniti/i,"bad","Concentración o función cognitiva","No autorizado para chicle como tal."],
+ [/energ[ií]a|cafe[ií]na|guaran/i,"bad","Energía o cafeína","La cafeína no tiene claims autorizados. Para «energía» solo sirven nutrientes con claim aprobado, como B5 o B12 («contribuye al metabolismo energético normal») con al menos 15% del VRN por porción."],
+ [/b12|vitamina/i,"warn","Vitaminas","Hay claims autorizados (p. ej. B12: «contribuye al funcionamiento normal del sistema inmunitario»), pero solo si la porción aporta al menos el 15% del VRN y con la redacción del registro."],
+ [/resaca/i,"bad","Resaca","No autorizado."],
+ [/adelgaz|quema|saciedad|apetito/i,"bad","Peso o apetito","No autorizado para chicle."],
+ [/blanque|dientes blancos/i,"warn","Blanqueamiento","Efecto cosmético, no de salud en alimentos; muy revisado por las autoridades. Evitadlo sin pruebas sólidas."],
+ [/sin az[uú]car/i,"neutral","«Sin azúcar»","Declaración nutricional: máximo 0,5 g de azúcares por 100 g. Añadid la advertencia de polialcoholes si superan el 10%."]
+];
+function checkClaims(){
+  const t=$("#claim-in").value, hits=RULES.filter(r=>r[0].test(t));
+  $("#claim-out").innerHTML = hits.length? hits.map(([,s,n,d])=>`<div class="row" style="align-items:flex-start;gap:10px;flex-wrap:nowrap"><span class="tag ${s}">${LBL[s]}</span><div><b>${n}.</b> <span class="muted">${d}</span></div></div>`).join("")
+   : `<p class="muted">No se ha detectado ningún claim de la lista. Revisad igualmente cualquier beneficio para la salud con vuestro responsable regulatorio.</p>`;
+}
+$("#claim-in").addEventListener("input",checkClaims);
+
+// ---------- roadmap ----------
+const PHASES=[
+ {w:"Fase 0",d:"nov – dic 2026",t:"Ordenar la casa",items:["Retirar de la web los claims de estrés/ansiedad y concentración; reescribir los autorizados con su condición de uso","Confirmar o renovar IFS Food / BRCGS en nivel superior y auditoría social (SMETA o amfori BSCI)","Dossier de capacidad en inglés: líneas, formatos, MOQ, plazos, I+D funcional, sostenibilidad","Calcular el coste por referencia y fijar un suelo de precio para marca blanca","Decidir con dirección el peso de cada camino (A marca blanca / B marca propia)"]},
+ {w:"Fase 1",d:"ene – may 2027",t:"Abrir conversaciones",items:["Proponer a Mercadona ampliar surtido en Portugal","Visitar ISM Colonia (ene/feb) con agenda cerrada de compradores alemanes","Exponer o acudir con agenda en PLMA Ámsterdam (mayo)","Presentar propuesta a Jerónimo Martins (Biedronka + Pingo Doce) y a Lidl / Aldi","Enviar muestras y fichas técnicas a 5 cadenas prioritarias según la matriz"]},
+ {w:"Fase 2",d:"jun – dic 2027",t:"Primeros contratos y piloto de marca",items:["Cerrar 1–2 contratos de marca blanca fuera de España","Piloto CHIC-KLES en Portugal: farmacias y tiendas de gasolinera","Seleccionar distribuidor en Marruecos y hacer pruebas de precio","Lanzar tienda en Amazon (ES, PT, FR, DE) con 3 sabores diferenciales","Medir rotación real por tienda e introducirla en el simulador"]},
+ {w:"Fase 3",d:"ene – abr 2028",t:"Escalar lo que funcione",items:["Escalar volumen con los clientes de marca blanca y planificar capacidad de planta","Decidir expansión de marca propia (Rumanía, México o Golfo) con datos del piloto","Explorar copacking para EE. UU. y visitar Sweets & Snacks Expo","Lanzar innovación: base biodegradable o línea funcional para exportación"]}
+];
+function renderRoad(){
+  let total=0,done=0;
+  $("#phases").innerHTML=PHASES.map((ph,pi)=>`<div class="phase"><div class="when"><span class="eyebrow">${ph.w} · ${ph.d}</span><b>${ph.t}</b></div><div>${ph.items.map((it,ii)=>{const k=pi+"-"+ii,ck=!!S.tasks[k];total++;if(ck)done++;return `<label class="task ${ck?"done":""}"><input type="checkbox" id="t-${k}" data-k="${k}" ${ck?"checked":""}><span>${it}</span></label>`}).join("")}</div></div>`).join("");
+  const pct=total?Math.round(done/total*100):0;$("#r-pct").textContent=`${done}/${total} · ${pct}%`;$("#r-bar").style.width=pct+"%";
+  $("#phases").querySelectorAll("input").forEach(i=>i.addEventListener("change",e=>{S.tasks[e.target.dataset.k]=e.target.checked;save();renderRoad();}));
+}
+
+// ---------- reset ----------
+$("#reset-all").addEventListener("click",function(){
+  if(this.dataset.confirm!=="1"){this.dataset.confirm="1";this.textContent="Pulsa otra vez para confirmar";$("#reset-msg").textContent="Se borrarán pesos, datos editados, supuestos y tareas marcadas.";return;}
+  try{localStorage.removeItem(KEY)}catch(e){}
+  S={model:"pl",w:JSON.parse(JSON.stringify(W_DEF)),over:{},sim:JSON.parse(JSON.stringify(SIM_DEF)),simLog:{},country:"PT",simCountry:"PT",tasks:{}};
+  this.dataset.confirm="";this.textContent="Borrar todos mis cambios";$("#reset-msg").textContent="Hecho. Valores originales restaurados.";setModel("pl");
+});
+
+// ---------- routing ----------
+const VIEWS=["diagnostico","mercados","pais","simulador","claims","ruta","fuentes"];
+function route(){const h=(location.hash||"").replace("#","");const v=VIEWS.includes(h)?h:"diagnostico";
+  document.querySelectorAll("section.view").forEach(s=>s.hidden=s.dataset.view!==v);
+  document.querySelectorAll("nav.tabs a").forEach(a=>a.setAttribute("aria-current",a.getAttribute("href")==="#"+v?"page":"false"));
+  if(v==="pais")renderCountry(); if(v==="simulador"){renderSimFields();renderSimOut();}
+  window.scrollTo(0,0);}
+window.addEventListener("hashchange",route);
+
+function renderAll(){renderWeights();renderMatrix();renderCountry();renderSimFields();renderSimOut();}
+renderCountrySelects();
+document.querySelectorAll("[data-model]").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.model===S.model)));
+renderAll();renderRoad();checkClaims();route();
+})();
+</script>
+
+</body></html>
