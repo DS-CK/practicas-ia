@@ -15,15 +15,22 @@
   header h1 { font-size:1.5rem; margin:0; line-height:1.1; letter-spacing:.02em; }
   header h1 span { color:var(--green); }
   .lema { margin:2px 0 0; font-size:.82rem; color:var(--muted); }
-  .bola, .gragea { background:linear-gradient(145deg,#6fd77d 0%,#2faa3f 55%,#1f7a2c 100%); box-shadow:inset 2px 2px 4px rgba(255,255,255,.45), inset -2px -3px 5px rgba(0,0,0,.3); border-radius:32%; aspect-ratio:1.7/1; }
-  .bola { position:absolute; bottom:-30px; opacity:.6; animation:sube 9s linear infinite; }
-  .gragea { display:inline-block; width:1.1em; height:auto; margin-right:.3em; vertical-align:-.05em; transform:rotate(-15deg); }
+  .bola, .gragea { position:relative; background:linear-gradient(150deg,#8cf09a 0%,#2faa3f 45%,#17701f 100%); border-radius:30%; aspect-ratio:1.7/1;
+    box-shadow:inset 0 -4px 6px rgba(0,60,10,.45), inset 0 3px 4px rgba(255,255,255,.55), 0 4px 10px rgba(0,0,0,.45), 0 0 14px rgba(47,170,63,.35); }
+  .bola::before, .gragea::before { content:""; position:absolute; top:12%; left:10%; width:55%; height:28%; border-radius:50%;
+    background:linear-gradient(180deg,rgba(255,255,255,.85),rgba(255,255,255,0)); transform:rotate(-8deg); }
+  .bola::after, .gragea::after { content:""; position:absolute; right:12%; bottom:16%; width:14%; height:14%; border-radius:50%; background:rgba(255,255,255,.5); }
+  .bola { position:absolute; bottom:-30px; opacity:.9; animation:sube 9s linear infinite; }
+  .gragea { display:inline-block; width:1.2em; margin-right:.3em; vertical-align:-.1em; transform:rotate(-15deg); }
   .b1 { left:34%; width:38px; animation-delay:0s; }
   .b2 { left:44%; width:24px; animation-delay:2.5s; }
   .b3 { left:55%; width:50px; animation-delay:5s; }
   .b4 { left:64%; width:28px; animation-delay:1.2s; }
   .b5 { left:25%; width:20px; animation-delay:6.5s; }
-  @keyframes sube { 0% { transform:translateY(0) rotate(-20deg) scale(.6); } 100% { transform:translateY(-110px) rotate(25deg) scale(1.3); opacity:0; } }
+  .b6 { left:72%; width:34px; animation-delay:3.8s; }
+  .b7 { left:50%; width:18px; animation-delay:7.5s; }
+  .b8 { left:80%; width:22px; animation-delay:.6s; }
+  @keyframes sube { 0% { transform:translate(0,0) rotate(-20deg) scale(.7); opacity:0; } 15% { opacity:.9; } 50% { transform:translate(12px,-50px) rotate(10deg) scale(1); } 100% { transform:translate(-8px,-120px) rotate(35deg) scale(1.2); opacity:0; } }
   .derecha { position:relative; z-index:1; display:flex; align-items:center; gap:16px; }
   #usuario { background:#1b2029; color:var(--text); border:1px solid var(--green); border-radius:8px; padding:8px 12px; font-size:.95rem; cursor:pointer; }
   #toast { position:fixed; left:50%; bottom:40px; transform:translate(-50%,30px); max-width:min(560px,90vw); background:var(--green); color:#fff;
@@ -63,7 +70,7 @@
 </head>
 <body>
 <header>
-  <span class="bola b1"></span><span class="bola b2"></span><span class="bola b3"></span><span class="bola b4"></span><span class="bola b5"></span>
+  <span class="bola b1"></span><span class="bola b2"></span><span class="bola b3"></span><span class="bola b4"></span><span class="bola b5"></span><span class="bola b6"></span><span class="bola b7"></span><span class="bola b8"></span>
   <div class="titulo">
     <h1><span class="gragea"></span>Prácticas <span>IA</span></h1>
     <p class="lema">Mastica la inteligencia artificial… ¡sin azúcar!</p>
