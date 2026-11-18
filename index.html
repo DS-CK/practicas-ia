@@ -336,6 +336,7 @@
 
 <section id="s2-2-1" data-resumen="Pide crear una infografía horizontal personal con ilustraciones y títulos manuscritos, tras hacer cinco preguntas una a una sobre trayectoria, aficiones y objetivo en CK. Sin inventar datos y con la foto de perfil como referencia.">
   <h2>2.2.1 «Practica de Rafa Nadal»</h2>
+  <img class="captura" src="infografia.png" alt="Ejemplo de infografía">
   <p>Crea una infografía sobre mí con el estilo de la imagen adjunta: ilustraciones, títulos manuscritos, fondo blanco y formato horizontal.</p>
   <p>Hazme estas preguntas una a una, esperando mi respuesta antes de continuar:</p>
   <ol>
@@ -348,7 +349,6 @@
   <p>Acepta respuestas cortas. Utiliza mi foto de perfil de Microsoft 365 como referencia para el retrato. Si no puedes acceder a ella, pídeme una foto o utiliza una ilustración genérica.</p>
   <p>Busca en internet las empresas, centros de estudios y lugares que mencione, preferentemente en sus webs oficiales, para incorporar logotipos, edificios y detalles visuales que enriquezcan la infografía. No deduzcas datos sobre mi trayectoria a partir de esas búsquedas.</p>
   <p>Después genera directamente la infografía con mis respuestas. No inventes datos ni copies la biografía de la imagen. Empieza por la primera pregunta.</p>
-  <p class="note">[Mientras hace el trabajo explicar lo de la Chat del iPhone]</p>
 </section>
 
 <section id="s3">
@@ -508,7 +508,7 @@
   }
   const totalPrompts = document.querySelectorAll("section[data-resumen]").length;
   document.querySelectorAll("section[data-resumen]").forEach((sec, indice) => {
-    const kids = [...sec.children].filter(el => el.tagName !== "H2" && !el.classList.contains("btn") && !(el.tagName === "H3" && el.textContent.trim() === "PROMPT"));
+    const kids = [...sec.children].filter(el => el.tagName !== "H2" && !el.classList.contains("btn") && !el.classList.contains("captura") && !(el.tagName === "H3" && el.textContent.trim() === "PROMPT"));
     const box = document.createElement("div");
     box.className = "prompt-box";
     const res = document.createElement("p");
@@ -522,7 +522,7 @@
     box.append(btn);
     kids[0].before(box);
     const tituloPrompt = [...sec.children].find(el => el.tagName === "H3" && el.textContent.trim() === "PROMPT");
-    (tituloPrompt || box).before(res);
+    (tituloPrompt || sec.querySelector(".captura") || box).before(res);
     const body = document.createElement("div");
     box.append(body);
     kids.forEach(k => body.append(k));
