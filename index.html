@@ -561,9 +561,10 @@
   selUsuario.addEventListener("change", () => localStorage.setItem("usuarioCK", selUsuario.value));
   function mostrarMensaje(indice, total) {
     const lista = MENSAJES[selUsuario.value];
-    toast.textContent = lista
+    const base = lista
       ? lista[Math.round(indice * (lista.length - 1) / Math.max(total - 1, 1))]
-      : "Elige tu nombre arriba a la derecha y te preparo un mensaje a tu medida 😉";
+      : "Elige tu nombre arriba a la derecha y te preparo un mensaje a tu medida";
+    toast.textContent = base.replace(/[\s.!?…]+$/, "") + ", ahora pega este prompt en el chat de tu IA";
     toast.classList.add("on");
     clearTimeout(toastTimer);
     toastTimer = setTimeout(() => toast.classList.remove("on"), 4500);
