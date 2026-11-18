@@ -181,21 +181,73 @@
   <p>Trabaja directamente en la hoja, sin macros.</p>
 </section>
 
-<section id="s1-1-3" data-resumen="Crea la hoja «Panel de pedidos» con un gráfico de burbujas por proveedor (nº de pedidos, importe medio e importe total) titulado «El mapa de nuestras compras». Incluye tres indicadores superiores, usando solo los pedidos ya generados.">
+<section id="s1-1-3" data-resumen="Crea la hoja «Panel de pedidos» con resumen por proveedor, segmentación nativa de meses, tres indicadores y un gráfico de burbujas «El mapa de nuestras compras». Todo vinculado a los pedidos existentes y validado antes de terminar.">
   <h2>1.1.3 «Generación de Gráficos»</h2>
   <h3>PROMPT</h3>
-  <p>Utiliza exclusivamente los pedidos ficticios que ya has generado en este libro. No inventes más registros ni modifiques los datos originales.</p>
-  <p>Crea una hoja «Panel de pedidos» con un gráfico de burbujas por proveedor:</p>
+  <p>Trabaja directamente en este libro de Excel. Utiliza exclusivamente los pedidos ficticios existentes: no inventes registros ni modifiques las hojas originales.</p>
+  <h3>OBJETIVO</h3>
+  <p>Crea o actualiza una única hoja «Panel de pedidos». Si ya existe, revísala y reutilízala; no generes duplicados.</p>
+  <h3>1. COMPROBACIÓN PREVIA</h3>
+  <p>Identifica las columnas reales de:</p>
   <ul>
-    <li>Eje horizontal: número de pedidos.</li>
-    <li>Eje vertical: importe medio por pedido en euros.</li>
-    <li>Tamaño de la burbuja: importe total comprado al proveedor.</li>
-    <li>Etiqueta las burbujas con el nombre del proveedor y utiliza colores diferenciados.</li>
+    <li>Identificador de pedido.</li>
+    <li>Fecha de pedido.</li>
+    <li>Proveedor.</li>
+    <li>Importe comprado: utiliza el importe del pedido, no el importe ofertado ni el precio unitario.</li>
   </ul>
-  <p>Si un pedido tiene varias líneas, cuenta su identificador una sola vez. Calcula el importe medio dividiendo el importe total entre el número de pedidos distintos.</p>
-  <p>Añade arriba tres indicadores grandes: importe total comprado, número de pedidos y proveedor con mayor importe de compras.</p>
-  <p>Titula el gráfico «El mapa de nuestras compras». Hazlo grande, limpio y visual, con importes legibles y una leyenda que explique el tamaño de las burbujas.</p>
-  <p>Utiliza tablas dinámicas o fórmulas vinculadas a los datos existentes. Si falta alguna columna necesaria, indícalo sin inventarla. Trabaja directamente en Excel.</p>
+  <p>Lee todas las filas. Comprueba que las fechas son válidas y que existen varios meses. Si falta algún campo necesario, indícalo sin inventarlo.</p>
+  <h3>2. RESUMEN VINCULADO</h3>
+  <p>Mediante fórmulas o tablas dinámicas, calcula por proveedor:</p>
+  <ul>
+    <li>Número de pedidos distintos: cada identificador se cuenta una sola vez por proveedor.</li>
+    <li>Importe total comprado: suma de los importes de sus líneas.</li>
+    <li>Importe medio por pedido = importe total / pedidos distintos.</li>
+  </ul>
+  <p>El indicador global de pedidos debe contar identificadores distintos en todo el conjunto, no sumar recuentos por proveedor si pudiera haber duplicidades.</p>
+  <p>No utilices valores copiados como resultados estáticos. Evita errores cuando no haya pedidos.</p>
+  <h3>3. SELECTOR NATIVO DE MESES</h3>
+  <p>Añade arriba una segmentación real de Excel, no un desplegable ni botones decorativos:</p>
+  <ul>
+    <li>Mes y año, ordenados cronológicamente.</li>
+    <li>Botones grandes en una o dos filas.</li>
+    <li>Estilo azul sobre fondo claro y selección contrastada.</li>
+    <li>Selección múltiple y opción de borrar filtro.</li>
+  </ul>
+  <p>Conecta el selector al resumen, al gráfico y a todos los indicadores. Puedes crear una base auxiliar vinculada, sin alterar el origen. Ocúltala solo después de comprobar el funcionamiento.</p>
+  <p>Si la segmentación no está disponible, explica la limitación; no simules que funciona.</p>
+  <h3>4. INDICADORES SUPERIORES</h3>
+  <p>Muestra con tamaño grande:</p>
+  <ul>
+    <li>Importe total comprado, en euros sin IVA.</li>
+    <li>Número de pedidos distintos.</li>
+    <li>Proveedor con mayor importe comprado y su importe.</li>
+  </ul>
+  <p>Indica visiblemente el periodo seleccionado. Si no hay resultados, muestra «Sin pedidos en el periodo seleccionado».</p>
+  <h3>5. GRÁFICO DE BURBUJAS</h3>
+  <p>Título: «El mapa de nuestras compras».</p>
+  <ul>
+    <li>X: número de pedidos distintos.</li>
+    <li>Y: importe medio por pedido (€).</li>
+    <li>Área de cada burbuja: importe total comprado.</li>
+    <li>Una burbuja por proveedor.</li>
+    <li>Etiquetas con los nombres y un color constante por proveedor.</li>
+    <li>Tamaño grande, importes legibles y explicación visible del tamaño.</li>
+  </ul>
+  <p>Prioriza una sola serie con todos los proveedores como puntos y colores y etiquetas por punto, vinculada directamente a un bloque numérico contiguo: pedidos, importe medio e importe total.</p>
+  <p>No consideres válido el gráfico solo porque tenga nombres de series. Comprueba que Excel reconoce puntos numéricos y que sus vínculos X, Y y tamaño apuntan a las celdas correctas.</p>
+  <p>Ajusta los ejes al rango real de los datos, con margen para las burbujas. Si hay filtro mensual, los ejes deben seguir mostrando todos los puntos del periodo. No uses límites fijos que dejen datos fuera ni escalado a miles o millones sin indicarlo.</p>
+  <h3>6. VALIDACIÓN ANTES DE TERMINAR</h3>
+  <ul>
+    <li>Reconcilia los indicadores y el resumen con los pedidos originales.</li>
+    <li>Verifica que cada proveedor con compras tenga una burbuja con X, Y y tamaño válidos.</li>
+    <li>Comprueba etiquetas, formatos y ausencia de errores.</li>
+    <li>Prueba un mes, dos meses y borrar el filtro.</li>
+    <li>Comprueba el caso sin resultados, sin modificar datos originales.</li>
+    <li>Confirma que el origen no ha cambiado.</li>
+    <li>Deja seleccionados todos los meses.</li>
+  </ul>
+  <p>No afirmes que las burbujas se ven únicamente porque el gráfico existe. Verifica sus puntos y vínculos; si no puedes comprobar su representación visual, dilo expresamente.</p>
+  <p>Finaliza con un resumen breve de lo construido, cifras verificadas y cualquier limitación real. No crees hojas auxiliares innecesarias ni dejes gráficos fallidos o duplicados.</p>
 </section>
 
 <section id="s1-1-4" data-resumen="Crea un panel interactivo con segmentación de datos por meses, gráfico de burbujas por proveedor e indicadores que responden al filtro. Usa controles nativos de Excel, sin macros ni datos nuevos, y avisa si no hay pedidos.">
