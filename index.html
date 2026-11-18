@@ -71,6 +71,15 @@
   @media (max-width:800px) { .copy-btn { top:10px; } }
   .c-rol{color:#9a8cff}.c-aud{color:#f0b45a}.c-ctx{color:#ff9a7a}.c-fmt{color:#2fc7ca}.c-lim{color:#a9a7b5}
   .leyenda{font-size:.9rem}
+  .anat{background:#262850;border-radius:10px;padding:22px 26px;margin-top:14px}
+  .anat-text{font-size:1.25rem;line-height:1.9;color:#f2f2f7}
+  .anat-text .t{transition:color .2s}
+  .anat-text .t.on{color:var(--c)}
+  .anat-text .t[data-k=rol]{--c:#9a8cff}.anat-text .t[data-k=aud]{--c:#f0b45a}.anat-text .t[data-k=ctx]{--c:#ff8f6b}.anat-text .t[data-k=fmt]{--c:#2fc7ca}.anat-text .t[data-k=lim]{--c:#a9a7b5}
+  .anat-btns{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+  .anat-btns button{background:transparent;color:#fff;border:2px solid var(--c);border-radius:8px;padding:8px 18px;font-weight:700;cursor:pointer}
+  .anat-btns button.on{background:var(--c);color:#14142b}
+  .anat-pie{font-size:.95rem;color:#d6d6e4;border-top:1px solid #4a4c7a;padding-top:12px;margin:0}
 </style>
 </head>
 <body>
@@ -318,7 +327,25 @@
 
 <section id="s1c-1">
   <h2>1.1.1 Generar un buen prompt</h2>
-  <img class="captura" src="anatomia-prompt.png" alt="La anatomía de un buen prompt">
+  <p class="note">Pulsa los botones para iluminar cada parte del prompt. Puedes activar varios a la vez.</p>
+  <div class="anat" id="anat">
+    <div class="anat-text">
+      <span class="t" data-k="rol">Eres director de innovación de un grupo agroalimentario</span>
+      <span> preparando una propuesta </span>
+      <span class="t" data-k="aud">para el comité de inversiones</span><span>. A partir de estos datos de rendimiento de planta </span>
+      <span class="t" data-k="ctx">de los últimos tres años</span><span>, redacta </span>
+      <span class="t" data-k="fmt">el caso de negocio: oportunidad, cifras, riesgos y siguiente paso</span><span>. Tono ejecutivo, </span>
+      <span class="t" data-k="lim">menos de una página</span><span>.</span>
+    </div>
+    <div class="anat-btns">
+      <button type="button" data-k="rol" style="--c:#7b6cf0">Rol</button>
+      <button type="button" data-k="aud" style="--c:#f0b45a">Audiencia</button>
+      <button type="button" data-k="ctx" style="--c:#ff8f6b">Contexto</button>
+      <button type="button" data-k="fmt" style="--c:#2fc7ca">Formato</button>
+      <button type="button" data-k="lim" style="--c:#a9a7b5">Límite</button>
+    </div>
+    <p class="anat-pie"><b>Cinco técnicas en un solo párrafo.</b> Los mejores prompts combinan estas cinco y añaden una sexta: pedir el razonamiento, encadenar la siguiente pregunta, o cerrar con un «¿qué no puedes responder con estos datos?».</p>
+  </div>
 </section>
 
 <section id="s1c-2">
@@ -513,7 +540,25 @@
 
 <section id="s5">
   <h2>1. Automatización / Skills y agentes</h2>
-  <img class="captura" src="anatomia-prompt.png" alt="La anatomía de un buen prompt">
+  <p class="note">Pulsa los botones para iluminar cada parte del prompt. Puedes activar varios a la vez.</p>
+  <div class="anat" id="anat">
+    <div class="anat-text">
+      <span class="t" data-k="rol">Eres director de innovación de un grupo agroalimentario</span>
+      <span> preparando una propuesta </span>
+      <span class="t" data-k="aud">para el comité de inversiones</span><span>. A partir de estos datos de rendimiento de planta </span>
+      <span class="t" data-k="ctx">de los últimos tres años</span><span>, redacta </span>
+      <span class="t" data-k="fmt">el caso de negocio: oportunidad, cifras, riesgos y siguiente paso</span><span>. Tono ejecutivo, </span>
+      <span class="t" data-k="lim">menos de una página</span><span>.</span>
+    </div>
+    <div class="anat-btns">
+      <button type="button" data-k="rol" style="--c:#7b6cf0">Rol</button>
+      <button type="button" data-k="aud" style="--c:#f0b45a">Audiencia</button>
+      <button type="button" data-k="ctx" style="--c:#ff8f6b">Contexto</button>
+      <button type="button" data-k="fmt" style="--c:#2fc7ca">Formato</button>
+      <button type="button" data-k="lim" style="--c:#a9a7b5">Límite</button>
+    </div>
+    <p class="anat-pie"><b>Cinco técnicas en un solo párrafo.</b> Los mejores prompts combinan estas cinco y añaden una sexta: pedir el razonamiento, encadenar la siguiente pregunta, o cerrar con un «¿qué no puedes responder con estos datos?».</p>
+  </div>
 </section>
 
 </main>
@@ -589,6 +634,10 @@
       setTimeout(() => btn.textContent = "Copiar prompt", 1800);
     });
   });
+  document.querySelectorAll("#anat .anat-btns button").forEach(b => b.addEventListener("click", () => {
+    const on = b.classList.toggle("on");
+    document.querySelectorAll('#anat .t[data-k="' + b.dataset.k + '"]').forEach(s => s.classList.toggle("on", on));
+  }));
   const sections = [...document.querySelectorAll("main section")];
   const links = [...document.querySelectorAll("#menu a")];
   function show() {
