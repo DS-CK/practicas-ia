@@ -20,16 +20,16 @@
   .bola::before, .gragea::before { content:""; position:absolute; top:12%; left:10%; width:55%; height:28%; border-radius:50%;
     background:linear-gradient(180deg,rgba(255,255,255,1),rgba(255,255,255,0)); transform:rotate(-8deg); }
   .bola::after, .gragea::after { content:""; position:absolute; right:12%; bottom:16%; width:14%; height:14%; border-radius:50%; background:rgba(255,255,255,.5); }
-  .bola { position:absolute; bottom:-30px; opacity:.9; animation:sube 9s linear infinite; }
+  .bola { position:absolute; opacity:.95; }
   .gragea { display:inline-block; width:1.2em; margin-right:.3em; vertical-align:-.1em; transform:rotate(-15deg); }
-  .b1 { left:34%; width:38px; animation-delay:0s; }
-  .b2 { left:44%; width:24px; animation-delay:2.5s; }
-  .b3 { left:55%; width:50px; animation-delay:5s; }
-  .b4 { left:64%; width:28px; animation-delay:1.2s; }
-  .b5 { left:25%; width:20px; animation-delay:6.5s; }
-  .b6 { left:72%; width:34px; animation-delay:3.8s; }
-  .b7 { left:50%; width:18px; animation-delay:7.5s; }
-  .b8 { left:80%; width:22px; animation-delay:.6s; }
+  .b1 { left:34%; width:38px; top:14px;transform:rotate(-18deg); }
+  .b2 { left:44%; width:24px; top:40px;transform:rotate(12deg); }
+  .b3 { left:55%; width:50px; top:10px;transform:rotate(25deg); }
+  .b4 { left:64%; width:28px; top:38px;transform:rotate(-30deg); }
+  .b5 { left:25%; width:20px; top:30px;transform:rotate(8deg); }
+  .b6 { left:72%; width:34px; top:12px;transform:rotate(-10deg); }
+  .b7 { left:50%; width:18px; top:44px;transform:rotate(20deg); }
+  .b8 { left:80%; width:22px; top:26px;transform:rotate(-22deg); }
   @keyframes sube { 0% { transform:translate(0,0) rotate(-20deg) scale(.7); opacity:0; } 15% { opacity:.9; } 50% { transform:translate(12px,-50px) rotate(10deg) scale(1); } 100% { transform:translate(-8px,-120px) rotate(35deg) scale(1.2); opacity:0; } }
   .derecha { position:relative; z-index:1; display:flex; align-items:center; gap:16px; }
   #usuario { background:#1b2029; color:var(--text); border:1px solid var(--green); border-radius:8px; padding:8px 12px; font-size:.95rem; cursor:pointer; }
