@@ -34,6 +34,12 @@
     nav { position:static; width:100%; margin-top:70px; border-right:0; }
     main { margin:0; padding:24px 18px 60px; }
   }
+  .resumen { background:#1f2b22; border-left:4px solid var(--green); padding:10px 14px; border-radius:6px; margin:12px 0; white-space:normal; }
+  .resumen b { color:var(--green); }
+  .prompt-box { position:relative; background:#0f131a; border:1px solid var(--line); border-radius:8px; padding:16px 18px; margin-top:12px; }
+  .copy-btn { position:sticky; float:right; top:80px; margin:0 0 8px 12px; padding:6px 14px; background:var(--green); color:#fff; border:0; border-radius:6px; font-weight:600; cursor:pointer; }
+  .copy-btn:hover { background:#3cc24e; }
+  @media (max-width:800px) { .copy-btn { top:10px; } }
 </style>
 </head>
 <body>
@@ -73,7 +79,7 @@
   <p>Selecciona una práctica en el menú de la izquierda.</p>
 </section>
 
-<section id="s1-1-1">
+<section id="s1-1-1" data-resumen="Genera en Excel 20 materiales, 10 proveedores y 34 ofertas ficticias, más 500 líneas de pedidos con fórmulas que calculan diferencias e impactos de precio. Con 450 líneas sin discrepancia, 30 más caras y 20 más baratas, en tablas con formato profesional.">
   <h2>1.1.1 «Ofertas proveedores y pedidos»</h2>
   <h3>PROMPT</h3>
   <p>Crea 20 materiales distintos, distribuidos entre ingredientes, envases, consumibles y repuestos, y 10 proveedores inventados. Genera 34 ofertas en total; algunos materiales deben tener ofertas de 2 o 3 proveedores.</p>
@@ -122,7 +128,7 @@
   <a class="btn" href="02. Prompts para directivos (2).docx" download="02. Prompts para directivos (2).docx">Descargar archivo</a>
 </section>
 
-<section id="s1-1-2">
+<section id="s1-1-2" data-resumen="Hace más visual el control de precios con estados de color (Coincide, Discrepancia, Sin datos), columnas de diferencia en € y %, y barras de datos. Añade tres indicadores grandes sobre la tabla, todo con fórmulas y sin macros.">
   <h2>1.1.2 «Comprobación de precios»</h2>
   <h3>PROMPT</h3>
   <p>Haz más visual el control de precios:</p>
@@ -136,7 +142,7 @@
   <p>Trabaja directamente en la hoja, sin macros.</p>
 </section>
 
-<section id="s1-1-3">
+<section id="s1-1-3" data-resumen="Crea la hoja «Panel de pedidos» con un gráfico de burbujas por proveedor (nº de pedidos, importe medio e importe total) titulado «El mapa de nuestras compras». Incluye tres indicadores superiores, usando solo los pedidos ya generados.">
   <h2>1.1.3 «Generación de Gráficos»</h2>
   <h3>PROMPT</h3>
   <p>Utiliza exclusivamente los pedidos ficticios que ya has generado en este libro. No inventes más registros ni modifiques los datos originales.</p>
@@ -153,7 +159,7 @@
   <p>Utiliza tablas dinámicas o fórmulas vinculadas a los datos existentes. Si falta alguna columna necesaria, indícalo sin inventarla. Trabaja directamente en Excel.</p>
 </section>
 
-<section id="s1-1-4">
+<section id="s1-1-4" data-resumen="Crea un panel interactivo con segmentación de datos por meses, gráfico de burbujas por proveedor e indicadores que responden al filtro. Usa controles nativos de Excel, sin macros ni datos nuevos, y avisa si no hay pedidos.">
   <h2>1.1.4 «Generador de selección»</h2>
   <h3>PROMPT</h3>
   <p>Utiliza los pedidos ficticios que ya existen en este libro para crear una hoja llamada «Panel de pedidos». No inventes nuevos registros ni modifiques los datos originales.</p>
@@ -186,7 +192,7 @@
   <p>Trabaja directamente en el libro, no te limites a dar instrucciones.</p>
 </section>
 
-<section id="s1-1-5">
+<section id="s1-1-5" data-resumen="Configura la hoja «Informe» para imprimirla o guardarla como PDF en una sola página A4 apaisada: área de impresión completa, escala 1x1, márgenes estrechos y sin cuadrícula ni encabezados, sin tocar los datos.">
   <h2>1.1.5 «Generar un PDF»</h2>
   <h3>PROMPT</h3>
   <p>Configura la hoja «Informe» para que todo su contenido se imprima en una sola página A4 apaisada. Define el área de impresión para incluir todos los textos, indicadores y gráficos; elimina los saltos de página manuales y ajusta la escala a 1 página de ancho por 1 de alto. Utiliza márgenes estrechos, sin cuadrícula ni encabezados de filas y columnas. No elimines ni modifiques los datos. Comprueba la configuración y deja la hoja preparada para guardar como PDF.</p>
@@ -197,7 +203,7 @@
   <p>Selecciona una práctica en el menú de la izquierda.</p>
 </section>
 
-<section id="s1-2-1">
+<section id="s1-2-1" data-resumen="Crea desde cero una presentación 16:9 de tres diapositivas, muy visual y con cifras verificadas, que explique quién es Chic-kles Gum, qué hace y qué la hace interesante, con notas para presentarla en unos tres minutos.">
   <h2>1.2.1 «Generar una presentación»</h2>
   <p>Crea desde cero una presentación de exactamente tres diapositivas que explique quién es Chic-kles Gum (CK), qué hace y qué la hace interesante.</p>
   <p>Consulta https://chic-kles.com/ y otras fuentes públicas fiables. Tú decides los títulos, la estructura y cómo contar la historia.</p>
@@ -221,7 +227,7 @@
   <p>Selecciona una práctica en el menú de la izquierda.</p>
 </section>
 
-<section id="s2-1-1">
+<section id="s2-1-1" data-resumen="Pide actuar como consultor en normativa europea de envases para analizar cómo afecta el nuevo reglamento a Chic-kles Gum. Debe entregar resumen ejecutivo, tablas por formato, riesgos, plan a 12 meses y preguntas abiertas, sin inventar datos.">
   <h2>2.1.1 «Analizar con Copilot»</h2>
   <h3>ROL</h3>
   <p>Actúa como consultor especializado en normativa europea de envases y su aplicación a la industria alimentaria, con perspectiva de operaciones industriales.</p>
@@ -260,7 +266,7 @@
   <p>Antes de entregar, evalúa si las conclusiones están respaldadas, si has atribuido correctamente las responsabilidades y si las acciones son concretas. Corrige los puntos débiles y señala las incertidumbres que permanezcan.</p>
 </section>
 
-<section id="s2-consejos">
+<section id="s2-consejos" data-resumen="Plantilla para que Copilot actúe como panel de cinco asesores (contrario, primeros principios, expansionista, externo y ejecutor). Hace tres preguntas de contexto y termina con recomendación, mayor riesgo, primer paso e incertidumbres.">
   <h2>Más consejos de prompt y cómo preguntar</h2>
   <h3>LOS 5 ASESORES</h3>
   <p>Actúa como un panel de cinco asesores para ayudarme a analizar una decisión.</p>
@@ -289,7 +295,7 @@
   <p>Selecciona una práctica en el menú de la izquierda.</p>
 </section>
 
-<section id="s2-2-1">
+<section id="s2-2-1" data-resumen="Pide crear una infografía horizontal personal con ilustraciones y títulos manuscritos, tras hacer cinco preguntas una a una sobre trayectoria, aficiones y objetivo en CK. Sin inventar datos y con la foto de perfil como referencia.">
   <h2>2.2.1 «Practica de Rafa Nadal»</h2>
   <p>Crea una infografía sobre mí con el estilo de la imagen adjunta: ilustraciones, títulos manuscritos, fondo blanco y formato horizontal.</p>
   <p>Hazme estas preguntas una a una, esperando mi respuesta antes de continuar:</p>
@@ -311,7 +317,7 @@
   <p>Selecciona una práctica en el menú de la izquierda.</p>
 </section>
 
-<section id="s3-1-1">
+<section id="s3-1-1" data-resumen="Busca en los correos de Nuria Miñana los artículos de Peter Schreibvogel en dos fases: inventario completo y revisión uno a uno para localizar los que tratan del sentido o propósito del trabajo. Debe informar de cuántos revisó realmente.">
   <h2>3.1.1 Integración con el correo</h2>
   <p>Busca en los correos de Nuria Miñana, un artículo de Peter que hable sobre la motivación de los empleados.</p>
   <p>Haz la búsqueda en dos fases y no pases directamente a una búsqueda temática:</p>
@@ -340,7 +346,7 @@
   <p>Al final, indica cuántos artículos has inventariado en total, cuántos has revisado y cuántos tratan el concepto. Si no has podido revisar alguno, identifícalo expresamente. No afirmes que has revisado “todos” si no has podido comprobar individualmente todo el inventario.</p>
 </section>
 
-<section id="s3-1-2">
+<section id="s3-1-2" data-resumen="Pide buscar en correos, OneNote y conversaciones de Teams cuándo se va a hacer el «Laboratorio de Pilas».">
   <h2>3.1.2 Integración simultánea correo y OneNote</h2>
   <p>[Chat] Busca en mis correos, mi OneNote y mis conversaciones de Teams cuando se va a hacer el "Laboratorio de Pilas"</p>
 </section>
@@ -359,7 +365,7 @@
   <p>Selecciona una práctica en el menú de la izquierda.</p>
 </section>
 
-<section id="s4-1-1">
+<section id="s4-1-1" data-resumen="Pide investigar y programar una web interactiva inspirada en CHIC-KLES, con Explorador de sabores, test «¿Qué CHIC-KLES eres?» y una interacción sorpresa, además de sección de fuentes. Debe ser un prototipo funcional, responsive y animado.">
   <h2>4.1.1 Programación de una web simple</h2>
   <p>Diseña y programa una web interactiva sobre CHIC-KLES, inspirada visualmente en la web pública de CHIC-KLES sin azúcar, pero sin copiar literalmente su diseño.</p>
   <p>El objetivo es crear una práctica para demostrar las capacidades de Copilot para investigar, diseñar y programar una experiencia web interactiva.</p>
@@ -446,6 +452,31 @@
 </main>
 
 <script>
+  document.querySelectorAll("section[data-resumen]").forEach(sec => {
+    const kids = [...sec.children].filter(el => el.tagName !== "H2" && !el.classList.contains("btn") && !(el.tagName === "H3" && el.textContent.trim() === "PROMPT"));
+    const box = document.createElement("div");
+    box.className = "prompt-box";
+    const res = document.createElement("p");
+    res.className = "resumen";
+    res.innerHTML = "<b>Resumen:</b> ";
+    res.append(sec.dataset.resumen);
+    const btn = document.createElement("button");
+    btn.className = "copy-btn";
+    btn.type = "button";
+    btn.textContent = "Copiar prompt";
+    box.append(btn);
+    kids[0].before(res, box);
+    const body = document.createElement("div");
+    box.append(body);
+    kids.forEach(k => body.append(k));
+    btn.addEventListener("click", async () => {
+      const text = body.innerText.trim();
+      try { await navigator.clipboard.writeText(text); }
+      catch (e) { const ta = document.createElement("textarea"); ta.value = text; document.body.append(ta); ta.select(); document.execCommand("copy"); ta.remove(); }
+      btn.textContent = "¡Copiado!";
+      setTimeout(() => btn.textContent = "Copiar prompt", 1800);
+    });
+  });
   const sections = [...document.querySelectorAll("main section")];
   const links = [...document.querySelectorAll("#menu a")];
   function show() {
