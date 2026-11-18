@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prácticas IA</title>
+<style>
+  :root { --bg:#12151c; --panel:#1b2029; --line:#2b3240; --text:#e6e9ef; --muted:#9aa4b5; --green:#2faa3f; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family:"Segoe UI",Arial,sans-serif; background:var(--bg); color:var(--text); line-height:1.6; }
+  header { position:fixed; top:0; left:0; right:0; height:70px; background:#0d1016; border-bottom:1px solid var(--line);
+           display:flex; align-items:center; justify-content:space-between; padding:0 24px; z-index:10; }
+  header h1 { font-size:1.3rem; margin:0; }
+  .logo { background:#fff; border-radius:8px; padding:4px 10px; display:flex; }
+  .logo img { height:44px; display:block; }
+  nav { position:fixed; top:70px; bottom:0; left:0; width:300px; overflow-y:auto; background:var(--panel); border-right:1px solid var(--line); padding:16px 0; }
+  nav a { display:block; padding:8px 22px; color:var(--muted); text-decoration:none; font-size:.93rem; border-left:3px solid transparent; }
+  nav a:hover { color:var(--text); background:#232a36; }
+  nav a.active { color:#fff; border-left-color:var(--green); background:#232a36; }
+  nav a.group { font-weight:600; color:var(--text); margin-top:10px; }
+  nav a.sub { padding-left:38px; }
+  main { margin:70px 0 0 300px; padding:36px 48px 80px; max-width:1000px; }
+  section { display:none; }
+  section.active { display:block; }
+  h2 { margin-top:0; color:#fff; border-bottom:2px solid var(--green); padding-bottom:8px; }
+  h3 { color:var(--green); margin-top:28px; letter-spacing:.04em; font-size:1rem; }
+  p { margin:10px 0; white-space:pre-line; }
+  ul, ol { padding-left:24px; }
+  li { margin:4px 0; }
+  .btn { display:inline-block; margin-top:26px; padding:12px 22px; background:var(--green); color:#fff; font-weight:600; border-radius:8px; text-decoration:none; }
+  .btn:hover { background:#3cc24e; }
+  .note { color:var(--muted); font-style:italic; }
+  @media (max-width:800px) {
+    nav { position:static; width:100%; margin-top:70px; border-right:0; }
+    main { margin:0; padding:24px 18px 60px; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>Prácticas IA</h1>
+  <div class="logo"><img src="logo-chickles.png" alt="Chic-kles Gum"></div>
+</header>
+
+<nav id="menu">
+  <a href="#s1-1" class="group">1.1 Práctica Excel</a>
+  <a href="#s1-1-1" class="sub">1.1.1 Ofertas proveedores y pedidos</a>
+  <a href="#s1-1-2" class="sub">1.1.2 Comprobación de precios</a>
+  <a href="#s1-1-3" class="sub">1.1.3 Generación de gráficos</a>
+  <a href="#s1-1-4" class="sub">1.1.4 Generador de selección</a>
+  <a href="#s1-1-5" class="sub">1.1.5 Generar un PDF</a>
+  <a href="#s1-2" class="group">1.2 Práctica PowerPoint</a>
+  <a href="#s1-2-1" class="sub">1.2.1 Generar una presentación</a>
+  <a href="#s1c" class="group">1. Crear con Copilot</a>
+  <a href="#s2-1" class="group">2.1 Analizar con Copilot</a>
+  <a href="#s2-1-1" class="sub">2.1.1 Analizar con Copilot</a>
+  <a href="#s2-consejos" class="sub">Más consejos: los 5 asesores</a>
+  <a href="#s2-2" class="group">2.2 Crear con Copilot</a>
+  <a href="#s2-2-1" class="sub">2.2.1 Práctica de Rafa Nadal</a>
+  <a href="#s3" class="group">3. Integración con Microsoft</a>
+  <a href="#s3-1-1" class="sub">3.1.1 Integración con el correo</a>
+  <a href="#s3-1-2" class="sub">3.1.2 Correo y OneNote</a>
+  <a href="#s3-2-1" class="sub">3.2.1 Generar una automatización</a>
+  <a href="#s4" class="group">4. Programación autónoma</a>
+  <a href="#s4-1-1" class="sub">4.1.1 Programación de una web simple</a>
+  <a href="#s5" class="group">1. Automatización / Skills y agentes</a>
+</nav>
+
+<main>
+
+<section id="s1-1">
+  <h2>1.1 Práctica Excel</h2>
+  <p>Selecciona una práctica en el menú de la izquierda.</p>
+</section>
+
+<section id="s1-1-1">
+  <h2>1.1.1 «Ofertas proveedores y pedidos»</h2>
+  <h3>PROMPT</h3>
+  <p>Crea 20 materiales distintos, distribuidos entre ingredientes, envases, consumibles y repuestos, y 10 proveedores inventados. Genera 34 ofertas en total; algunos materiales deben tener ofertas de 2 o 3 proveedores.</p>
+  <p>Incluye estas columnas:</p>
+  <ul>
+    <li>Código de artículo</li><li>Familia</li><li>Descripción del artículo</li><li>Proveedor ficticio</li>
+    <li>Unidad de compra</li><li>Precio unitario (€)</li><li>Plazo de entrega (días)</li><li>Pedido mínimo</li>
+  </ul>
+  <p>Usa códigos únicos y datos coherentes entre sí. Todos los nombres, especificaciones, precios y condiciones deben ser inventados, sin consultar datos de mercado.</p>
+  <p>Genera exactamente 500 líneas de pedidos, con identificadores únicos PED-2026-0001 a PED-2026-0500 y fechas entre enero y octubre de 2026, ordenadas cronológicamente. Cada pedido tendrá una sola línea.</p>
+  <p>Utiliza exclusivamente las combinaciones de artículo y proveedor de la hoja de ofertas. Incluye todos los materiales, proveedores y ofertas al menos una vez. Las cantidades deben ser múltiplos positivos del pedido mínimo correspondiente.</p>
+  <p>Incluye exactamente estas columnas, en este orden:</p>
+  <ul>
+    <li>A. Pedido</li><li>B. Fecha de pedido</li><li>C. Código de artículo</li><li>D. Familia</li><li>E. Descripción del artículo</li>
+    <li>F. Proveedor ficticio</li><li>G. Unidad</li><li>H. Cantidad</li><li>I. Precio oferta (€)</li><li>J. Precio pedido (€)</li>
+    <li>K. Diferencia €/ud</li><li>L. Diferencia %</li><li>M. Importe oferta (€)</li><li>N. Importe pedido (€)</li><li>O. Impacto (€)</li><li>P. Entrega prevista</li>
+  </ul>
+  <p>Distribuye las discrepancias así:</p>
+  <ul>
+    <li>450 líneas con precio de pedido igual al precio ofertado.</li>
+    <li>30 líneas con precio superior, entre un 2 % y un 10 %.</li>
+    <li>20 líneas con precio inferior, entre un 1 % y un 5 %.</li>
+  </ul>
+  <p>Reparte las discrepancias entre distintas fechas, materiales y proveedores. Genera los datos una sola vez, sin funciones aleatorias volátiles.</p>
+  <p>Usa fórmulas vinculadas a las celdas de origen para:</p>
+  <ul>
+    <li>Recuperar el precio ofertado por combinación de artículo y proveedor.</li>
+    <li>Diferencia €/ud = precio pedido − precio oferta.</li>
+    <li>Diferencia % = diferencia €/ud ÷ precio oferta.</li>
+    <li>Importe oferta = cantidad × precio oferta, redondeado a 2 decimales.</li>
+    <li>Importe pedido = cantidad × precio pedido, redondeado a 2 decimales.</li>
+    <li>Impacto = importe pedido − importe oferta.</li>
+    <li>Entrega prevista = fecha de pedido + plazo de entrega ofertado, en días naturales.</li>
+  </ul>
+  <p>No incluyas ninguna columna de «Revisión de precio», «Estado», «Conforme», «Sobrecoste», «Ahorro» ni otra clasificación equivalente.</p>
+  <p>Presentación:</p>
+  <ul>
+    <li>Convierte ambos conjuntos en tablas de Excel con filtros.</li>
+    <li>Usa un diseño profesional, encabezados destacados y filas alternas.</li>
+    <li>Muestra precios unitarios y diferencias unitarias con 4 decimales, importes con 2 decimales, porcentajes con 2 decimales y fechas en formato dd/mm/aaaa.</li>
+    <li>Resalta mediante formato condicional los impactos positivos y negativos, sin añadir columnas.</li>
+    <li>Ajusta los anchos para que encabezados y valores sean legibles.</li>
+    <li>Indica claramente que todos los datos son simulados y que los precios e importes no incluyen IVA.</li>
+    <li>Comprueba que hay exactamente 500 líneas, que se cumple el reparto de discrepancias y que las fórmulas no presentan errores.</li>
+  </ul>
+  <a class="btn" href="02. Prompts para directivos (2).docx" download="02. Prompts para directivos (2).docx">Descargar archivo</a>
+</section>
+
+<section id="s1-1-2">
+  <h2>1.1.2 «Comprobación de precios»</h2>
+  <h3>PROMPT</h3>
+  <p>Haz más visual el control de precios:</p>
+  <ul>
+    <li>En «Comprobación de precio», muestra «✓ Coincide» con fondo verde, «⚠ Discrepancia» con fondo rojo y «? Sin datos» con fondo amarillo.</li>
+    <li>Añade dos columnas calculadas: diferencia en euros y diferencia porcentual entre el precio de compra y el del contrato.</li>
+    <li>En la diferencia en euros, utiliza barras de datos: rojo cuando pagamos de más y verde cuando pagamos de menos.</li>
+    <li>Crea encima de la tabla tres indicadores grandes: artículos revisados, número de discrepancias y porcentaje de precios que coinciden.</li>
+  </ul>
+  <p>Utiliza fórmulas y formato condicional para que todo se actualice al modificar los precios. Mantén «Sin datos» cuando falte información y evita errores de división si el precio del contrato es cero.</p>
+  <p>Trabaja directamente en la hoja, sin macros.</p>
+</section>
+
+<section id="s1-1-3">
+  <h2>1.1.3 «Generación de Gráficos»</h2>
+  <h3>PROMPT</h3>
+  <p>Utiliza exclusivamente los pedidos ficticios que ya has generado en este libro. No inventes más registros ni modifiques los datos originales.</p>
+  <p>Crea una hoja «Panel de pedidos» con un gráfico de burbujas por proveedor:</p>
+  <ul>
+    <li>Eje horizontal: número de pedidos.</li>
+    <li>Eje vertical: importe medio por pedido en euros.</li>
+    <li>Tamaño de la burbuja: importe total comprado al proveedor.</li>
+    <li>Etiqueta las burbujas con el nombre del proveedor y utiliza colores diferenciados.</li>
+  </ul>
+  <p>Si un pedido tiene varias líneas, cuenta su identificador una sola vez. Calcula el importe medio dividiendo el importe total entre el número de pedidos distintos.</p>
+  <p>Añade arriba tres indicadores grandes: importe total comprado, número de pedidos y proveedor con mayor importe de compras.</p>
+  <p>Titula el gráfico «El mapa de nuestras compras». Hazlo grande, limpio y visual, con importes legibles y una leyenda que explique el tamaño de las burbujas.</p>
+  <p>Utiliza tablas dinámicas o fórmulas vinculadas a los datos existentes. Si falta alguna columna necesaria, indícalo sin inventarla. Trabaja directamente en Excel.</p>
+</section>
+
+<section id="s1-1-4">
+  <h2>1.1.4 «Generador de selección»</h2>
+  <h3>PROMPT</h3>
+  <p>Utiliza los pedidos ficticios que ya existen en este libro para crear una hoja llamada «Panel de pedidos». No inventes nuevos registros ni modifiques los datos originales.</p>
+  <p>Crea un panel interactivo con estos elementos:</p>
+  <h3>SELECTOR VISUAL DE PERIODO</h3>
+  <p>Añade arriba una segmentación de datos con botones grandes para seleccionar meses, no un desplegable. Identifica cada mes con su año y ordénalos cronológicamente.</p>
+  <p>Distribuye los botones en una o dos filas, con estilo azul sobre fondo claro y un contraste marcado para la selección. Permite seleccionar varios periodos y borrar el filtro para mostrar todos los datos.</p>
+  <h3>GRÁFICO DE BURBUJAS</h3>
+  <p>Resume los datos por proveedor y representa:</p>
+  <ul>
+    <li>Eje horizontal: número de pedidos distintos.</li>
+    <li>Eje vertical: importe medio por pedido en euros.</li>
+    <li>Tamaño de la burbuja: importe total comprado.</li>
+    <li>Etiquetas: nombre del proveedor.</li>
+  </ul>
+  <p>Mantén un color consistente para cada proveedor. Haz el gráfico grande y legible, con el título «El mapa de nuestras compras» y una indicación visible del periodo seleccionado.</p>
+  <h3>INDICADORES</h3>
+  <p>Muestra encima del gráfico:</p>
+  <ul>
+    <li>Importe total comprado.</li>
+    <li>Número de pedidos distintos.</li>
+    <li>Proveedor con mayor importe de compras.</li>
+  </ul>
+  <h3>FUNCIONAMIENTO</h3>
+  <p>Conecta el selector al gráfico y a todos los indicadores. Al pulsar un mes o varios, todo el panel debe mostrar únicamente los pedidos de ese periodo.</p>
+  <p>Crea las tablas dinámicas, columnas auxiliares y fórmulas necesarias. Para las burbujas, utiliza un gráfico normal vinculado a un resumen que responda al filtro si no admite conexión directa.</p>
+  <p>Si un pedido tiene varias líneas, cuenta su identificador una sola vez. Calcula el importe medio dividiendo el importe total entre el número de pedidos distintos. Cuando el filtro no devuelva pedidos, muestra un aviso y evita errores de cálculo.</p>
+  <p>Comprueba primero que existen fechas válidas y varios periodos. No inventes fechas si faltan.</p>
+  <p>Utiliza controles nativos de Excel, sin macros ni botones decorativos. Si alguna función no está disponible en este entorno, explica la limitación.</p>
+  <p>Trabaja directamente en el libro, no te limites a dar instrucciones.</p>
+</section>
+
+<section id="s1-1-5">
+  <h2>1.1.5 «Generar un PDF»</h2>
+  <h3>PROMPT</h3>
+  <p>Configura la hoja «Informe» para que todo su contenido se imprima en una sola página A4 apaisada. Define el área de impresión para incluir todos los textos, indicadores y gráficos; elimina los saltos de página manuales y ajusta la escala a 1 página de ancho por 1 de alto. Utiliza márgenes estrechos, sin cuadrícula ni encabezados de filas y columnas. No elimines ni modifiques los datos. Comprueba la configuración y deja la hoja preparada para guardar como PDF.</p>
+</section>
+
+<section id="s1-2">
+  <h2>1.2 Práctica PowerPoint</h2>
+  <p>Selecciona una práctica en el menú de la izquierda.</p>
+</section>
+
+<section id="s1-2-1">
+  <h2>1.2.1 «Generar una presentación»</h2>
+  <p>Crea desde cero una presentación de exactamente tres diapositivas que explique quién es Chic-kles Gum (CK), qué hace y qué la hace interesante.</p>
+  <p>Consulta https://chic-kles.com/ y otras fuentes públicas fiables. Tú decides los títulos, la estructura y cómo contar la historia.</p>
+  <p>Quiero una presentación muy visual, con gráficos, cifras relevantes e ilustraciones atractivas. La primera diapositiva debe tener mucho gancho y mostrar de un vistazo la actividad de CK. Evita una portada convencional.</p>
+  <p>Combina fotografías reales de productos, el logotipo, ilustraciones de procesos y gráficos cuando haya datos suficientes. Destaca las cifras más interesantes con números grandes y poco texto.</p>
+  <p>Utiliza formato panorámico 16:9, una estética moderna y colores coherentes con nuestra web. Cada diapositiva debe tener una composición propia y un mensaje claro.</p>
+  <p>Inventa la propuesta creativa, no los datos. Verifica las cifras, indica su fecha y cita las fuentes en las notas. No presentes imágenes ilustrativas como fotografías de nuestras instalaciones.</p>
+  <p>Crea directamente las tres diapositivas y añade notas para explicarlas en unos tres minutos.</p>
+</section>
+
+<section id="s1c">
+  <h2>1. Crear con Copilot</h2>
+  <ul>
+    <li>Explicar el entorno visual de Copilot.</li>
+    <li>Explicar cómo es un prompt.</li>
+  </ul>
+</section>
+
+<section id="s2-1">
+  <h2>2.1 Analizar con Copilot</h2>
+  <p>Selecciona una práctica en el menú de la izquierda.</p>
+</section>
+
+<section id="s2-1-1">
+  <h2>2.1.1 «Analizar con Copilot»</h2>
+  <h3>ROL</h3>
+  <p>Actúa como consultor especializado en normativa europea de envases y su aplicación a la industria alimentaria, con perspectiva de operaciones industriales.</p>
+  <h3>INSTRUCCIÓN</h3>
+  <p>Analiza cómo afectará el nuevo Reglamento europeo de envases y residuos de envases a Chic-kles Gum. Identifica qué debemos cambiar, cuándo y qué decisiones debería tomar nuestro comité de dirección.</p>
+  <h3>CONTEXTO</h3>
+  <p>Soy Enrique García García, Director de Operaciones de Chic-kles Gum, fabricante de chicle sin azúcar ubicado en Riba-roja de Túria, Valencia, que suministra a la gran distribución.</p>
+  <p>Consulta https://chic-kles.com/ para conocer nuestra actividad. Trabajamos con botes, bolsitas, cajas de cartón y envolturas de barras, además de etiquetas, sleeves y embalajes de agrupación y transporte.</p>
+  <p>Necesitamos anticipar las consecuencias para los materiales, el diseño de envases, los proveedores y las líneas de envasado, para orientar nuestras inversiones y evitar adaptaciones tardías.</p>
+  <h3>EJEMPLOS</h3>
+  <p>Para cada obligación, sigue esta estructura:</p>
+  <p>«Requisito y fuente oficial → formato potencialmente afectado → implicación para CK → dato pendiente de confirmar → acción y plazo».</p>
+  <p>Por ejemplo, si identificas un requisito de reciclabilidad aplicable a un bote con sleeve, explica qué información debemos solicitar al proveedor para evaluar el conjunto. No des por hecho que nuestro envase incumple.</p>
+  <h3>RESTRICCIONES</h3>
+  <ul>
+    <li>Utiliza fuentes oficiales vigentes y enlaza los artículos que respaldan cada obligación.</li>
+    <li>Distingue fechas de entrada en vigor, aplicación y periodos transitorios.</li>
+    <li>Comprueba excepciones y condiciones específicas de los envases alimentarios.</li>
+    <li>Diferencia las responsabilidades de CK, proveedores y clientes según su papel en cada operación.</li>
+    <li>No inventes materiales, pesos, composiciones, costes ni características de nuestros envases.</li>
+    <li>Separa obligaciones confirmadas, interpretaciones, estimaciones y cuestiones pendientes.</li>
+    <li>Si faltan datos, indica cuáles y continúa con un análisis condicionado.</li>
+    <li>Presenta rangos de costes solo cuando exista una base documentada.</li>
+    <li>Compara con empresas del sector únicamente mediante prácticas verificables.</li>
+  </ul>
+  <h3>OUTPUT</h3>
+  <p>Entrega en español:</p>
+  <ol>
+    <li>Un resumen ejecutivo de una página para Dirección.</li>
+    <li>Una tabla por formato con obligación, fuente, fecha, impacto, datos pendientes y acción recomendada.</li>
+    <li>Riesgos, costes potenciales y oportunidades, ordenados por prioridad.</li>
+    <li>Un plan para los próximos doce meses con acciones, áreas responsables propuestas e hitos.</li>
+    <li>Las preguntas que CK debe resolver para concretar el diagnóstico.</li>
+  </ol>
+  <h3>REVISIÓN FINAL — EIO</h3>
+  <p>Antes de entregar, evalúa si las conclusiones están respaldadas, si has atribuido correctamente las responsabilidades y si las acciones son concretas. Corrige los puntos débiles y señala las incertidumbres que permanezcan.</p>
+</section>
+
+<section id="s2-consejos">
+  <h2>Más consejos de prompt y cómo preguntar</h2>
+  <h3>LOS 5 ASESORES</h3>
+  <p>Actúa como un panel de cinco asesores para ayudarme a analizar una decisión.</p>
+  <p>Mi caso o decisión: [Escribe aquí el asunto que quieres analizar].</p>
+  <p>Antes de empezar, hazme tres preguntas, una a una, para entender el contexto, mi objetivo y las restricciones. Espera mi respuesta antes de formular la siguiente.</p>
+  <p>Después, analiza el caso desde cinco perspectivas. Dedica un máximo de cinco líneas a cada una:</p>
+  <ol>
+    <li>El contrario: cuestiona mi planteamiento. ¿Qué puede salir mal y qué puntos débiles estoy pasando por alto?</li>
+    <li>El de primeros principios: identifica el problema de fondo, cuestiona los supuestos y reconstruye la solución desde lo esencial.</li>
+    <li>El expansionista: propone oportunidades, alternativas y posibilidades que todavía no he considerado.</li>
+    <li>El externo: analiza cómo lo vería alguien ajeno a nuestra empresa y qué daríamos por sentado por costumbre.</li>
+    <li>El ejecutor: convierte el análisis en acciones concretas, con responsables propuestos y plazos.</li>
+  </ol>
+  <p>Termina con una síntesis breve:</p>
+  <ul>
+    <li>Recomendación: qué harías y por qué.</li>
+    <li>Mayor riesgo: qué debemos vigilar.</li>
+    <li>Primer paso esta semana: una acción concreta para avanzar.</li>
+    <li>Incertidumbres: qué información falta y qué podría cambiar la recomendación.</li>
+  </ul>
+  <p>Distingue los hechos de los supuestos. No inventes datos ni fuerces el consenso entre los cinco asesores.</p>
+</section>
+
+<section id="s2-2">
+  <h2>2.2 Crear con Copilot</h2>
+  <p>Selecciona una práctica en el menú de la izquierda.</p>
+</section>
+
+<section id="s2-2-1">
+  <h2>2.2.1 «Practica de Rafa Nadal»</h2>
+  <p>Crea una infografía sobre mí con el estilo de la imagen adjunta: ilustraciones, títulos manuscritos, fondo blanco y formato horizontal.</p>
+  <p>Hazme estas preguntas una a una, esperando mi respuesta antes de continuar:</p>
+  <ol>
+    <li>¿Cómo te llamas y a qué te dedicas?</li>
+    <li>¿De dónde eres y dónde has vivido?</li>
+    <li>¿Qué tres momentos destacarías de tu trayectoria? Puedes mencionar empresas, estudios o proyectos.</li>
+    <li>¿Cuáles son tus aficiones y valores?</li>
+    <li>¿Qué objetivo tienes en CK?</li>
+  </ol>
+  <p>Acepta respuestas cortas. Utiliza mi foto de perfil de Microsoft 365 como referencia para el retrato. Si no puedes acceder a ella, pídeme una foto o utiliza una ilustración genérica.</p>
+  <p>Busca en internet las empresas, centros de estudios y lugares que mencione, preferentemente en sus webs oficiales, para incorporar logotipos, edificios y detalles visuales que enriquezcan la infografía. No deduzcas datos sobre mi trayectoria a partir de esas búsquedas.</p>
+  <p>Después genera directamente la infografía con mis respuestas. No inventes datos ni copies la biografía de la imagen. Empieza por la primera pregunta.</p>
+  <p class="note">[Mientras hace el trabajo explicar lo de la Chat del iPhone]</p>
+</section>
+
+<section id="s3">
+  <h2>3. Integración con nuestras aplicaciones de Microsoft</h2>
+  <p>Selecciona una práctica en el menú de la izquierda.</p>
+</section>
+
+<section id="s3-1-1">
+  <h2>3.1.1 Integración con el correo</h2>
+  <p>Busca en los correos de Nuria Miñana, un artículo de Peter que hable sobre la motivación de los empleados.</p>
+  <p>Haz la búsqueda en dos fases y no pases directamente a una búsqueda temática:</p>
+  <ol>
+    <li>Inventario: identifica primero todos los artículos de Peter Schreibvogel que Nuria Miñana me haya enviado, independientemente de su título o tema. Haz una lista completa con título del artículo, fecha y asunto del correo.</li>
+    <li>Revisión: revisa después, uno por uno, el contenido de todos los artículos del inventario y comprueba si en cualquier parte del texto se habla de:
+      <ul>
+        <li>sentido o significado del trabajo;</li>
+        <li>propósito profesional o personal;</li>
+        <li>encontrar propósito en la vida;</li>
+        <li>que el trabajo aporte sentido;</li>
+        <li>motivación relacionada con propósito o sentido;</li>
+        <li>u otras formulaciones equivalentes.</li>
+      </ul>
+    </li>
+  </ol>
+  <p>No descartes un artículo porque su título o tema principal trate de otra cuestión, como estrés, liderazgo, motivación, energía, coaching, etc.</p>
+  <p>Para cada artículo en el que aparezca el concepto, indícame:</p>
+  <ul>
+    <li>título;</li>
+    <li>asunto y fecha del correo;</li>
+    <li>apartado o contexto concreto donde aparece;</li>
+    <li>cita breve o idea exacta;</li>
+    <li>conclusión que extrae Peter Schreibvogel.</li>
+  </ul>
+  <p>Al final, indica cuántos artículos has inventariado en total, cuántos has revisado y cuántos tratan el concepto. Si no has podido revisar alguno, identifícalo expresamente. No afirmes que has revisado “todos” si no has podido comprobar individualmente todo el inventario.</p>
+</section>
+
+<section id="s3-1-2">
+  <h2>3.1.2 Integración simultánea correo y OneNote</h2>
+  <p>[Chat] Busca en mis correos, mi OneNote y mis conversaciones de Teams cuando se va a hacer el "Laboratorio de Pilas"</p>
+</section>
+
+<section id="s3-2-1">
+  <h2>3.2.1 Generar una automatización</h2>
+  <p>Simulación de la "Factura de Prinova" (lo hace Diego)</p>
+  <ol>
+    <li>Se muestra el Excel.</li>
+    <li>Se manda la factura de Prinova para que la procese.</li>
+  </ol>
+</section>
+
+<section id="s4">
+  <h2>4. Programación autónoma</h2>
+  <p>Selecciona una práctica en el menú de la izquierda.</p>
+</section>
+
+<section id="s4-1-1">
+  <h2>4.1.1 Programación de una web simple</h2>
+  <p>Diseña y programa una web interactiva sobre CHIC-KLES, inspirada visualmente en la web pública de CHIC-KLES sin azúcar, pero sin copiar literalmente su diseño.</p>
+  <p>El objetivo es crear una práctica para demostrar las capacidades de Copilot para investigar, diseñar y programar una experiencia web interactiva.</p>
+
+  <h3>1. Investiga antes de programar</h3>
+  <p>Investiga CHIC-KLES GUM utilizando información pública disponible en Internet.</p>
+  <p>No te limites a la web oficial. Puedes utilizar otras fuentes públicas fiables para enriquecer el contenido: noticias, entrevistas, publicaciones, redes sociales corporativas, distribuidores, ferias, proyectos públicos, información empresarial u otras fuentes relevantes.</p>
+  <p>Contrasta la información y no inventes datos. Prioriza las fuentes oficiales y muestra al final las principales fuentes utilizadas.</p>
+
+  <h3>2. Diseño y experiencia</h3>
+  <p>Crea una experiencia moderna, visual, fresca y dinámica inspirada en el universo del chicle, los sabores y los colores de CHIC-KLES.</p>
+  <p>La página inicial debe mostrar grandes bloques interactivos como:</p>
+  <ul>
+    <li>Descubre CHIC-KLES</li><li>Nuestros sabores</li><li>Explorador de sabores</li><li>¿Qué CHIC-KLES eres?</li>
+    <li>Sin azúcar</li><li>¿Qué aporta mascar chicle?</li><li>Calidad</li><li>¿Sabías que...?</li>
+  </ul>
+  <p>No muestres toda la información desde el principio. Quiero descubrirla interactuando con la web.</p>
+  <p>Al pulsar los diferentes títulos, la información deberá aparecer mediante tarjetas, animaciones, expansiones, transiciones, cambios de color u otros recursos interactivos.</p>
+
+  <h3>3. Explorador de sabores</h3>
+  <p>Crea un Explorador de sabores como uno de los elementos protagonistas.</p>
+  <p>Diseña un control visual que permita moverse entre distintas sensaciones, por ejemplo: Fresco → Intenso → Dulce → Frutal</p>
+  <p>Al mover el selector deben cambiar dinámicamente:</p>
+  <ul>
+    <li>Los sabores CHIC-KLES recomendados.</li>
+    <li>El color y aspecto de la interfaz.</li>
+    <li>Las descripciones.</li>
+    <li>Elementos gráficos o animaciones.</li>
+  </ul>
+  <p>Cada sabor debe tener su propia personalidad visual.</p>
+  <p>El objetivo es que el usuario pueda explorar la gama de una manera divertida, no mediante un simple listado de productos.</p>
+
+  <h3>4. ¿Qué CHIC-KLES eres?</h3>
+  <p>Crea un pequeño test interactivo denominado “¿Qué CHIC-KLES eres?”.</p>
+  <p>Haz entre 3 y 5 preguntas, presentadas una a una. Por ejemplo:</p>
+  <ul>
+    <li>¿Buscas frescor o sabor?</li>
+    <li>¿Prefieres algo intenso o suave?</li>
+    <li>¿Eres más clásico o atrevido?</li>
+    <li>¿Menta o fruta?</li>
+  </ul>
+  <p>Las respuestas deben influir realmente en el resultado mediante lógica JavaScript.</p>
+  <p>Al terminar, muestra una recomendación del tipo: “Tu CHIC-KLES es…” seguida del sabor recomendado, su descripción y una pequeña animación o transformación visual de la pantalla.</p>
+  <p>Permite posteriormente volver a realizar el test.</p>
+
+  <h3>5. Interactividad</h3>
+  <p>Quiero utilizar esta práctica para comprobar hasta dónde puede llegar Copilot programando.</p>
+  <p>Incluye:</p>
+  <ul>
+    <li>HTML, CSS y JavaScript funcional.</li><li>Diseño responsive.</li><li>Animaciones.</li><li>Microinteracciones.</li>
+    <li>Hover y efectos al pulsar.</li><li>Contenido desplegable.</li><li>Cambios dinámicos de color.</li><li>Estados de la aplicación.</li>
+    <li>Transiciones suaves.</li><li>Elementos que reaccionen a las decisiones del usuario.</li>
+  </ul>
+  <p>No quiero simplemente una página informativa con enlaces.</p>
+  <p>Quiero que se comporte como una pequeña aplicación web interactiva.</p>
+
+  <h3>6. Sorpréndeme</h3>
+  <p>Además del Explorador de sabores y ¿Qué CHIC-KLES eres?, inventa y programa al menos una interacción adicional que resulte sorprendente y visualmente atractiva.</p>
+  <p>Tienes libertad creativa para decidirla.</p>
+  <p>Prioriza una interacción que permita demostrar alguna capacidad de programación diferente a las anteriores.</p>
+
+  <h3>7. Fuentes</h3>
+  <p>Añade al final una sección discreta denominada Fuentes, indicando las principales fuentes públicas utilizadas.</p>
+  <p>Distingue claramente qué información procede de CHIC-KLES y qué información procede de otras fuentes.</p>
+  <p>Esta web es una práctica/prototipo y no una web oficial de CHIC-KLES.</p>
+
+  <h3>8. Ejecución</h3>
+  <p>No te limites a explicarme cómo podría hacerse.</p>
+  <p>Primero resume brevemente:</p>
+  <ol>
+    <li>Qué información has encontrado.</li>
+    <li>Qué concepto visual propones.</li>
+    <li>Qué interacciones vas a construir.</li>
+  </ol>
+  <p>Y después programa directamente el prototipo funcional e interactivo para que pueda probarlo.</p>
+  <p class="note">He reforzado precisamente esos dos puntos porque hacen la prueba mucho más interesante: el Explorador demuestra programación basada en estados y cambios dinámicos, mientras que ¿Qué CHIC-KLES eres? obliga a manejar preguntas, decisiones, lógica y resultados personalizados. Así no acaba siendo simplemente una landing page bonita.</p>
+</section>
+
+<section id="s5">
+  <h2>1. Automatización / Skills y agentes</h2>
+  <p class="note">Sin contenido por el momento.</p>
+</section>
+
+</main>
+
+<script>
+  const sections = [...document.querySelectorAll("main section")];
+  const links = [...document.querySelectorAll("#menu a")];
+  function show() {
+    const id = (location.hash || "#s1-1-1").slice(1);
+    const target = document.getElementById(id) || sections[0];
+    sections.forEach(s => s.classList.toggle("active", s === target));
+    links.forEach(a => a.classList.toggle("active", a.getAttribute("href") === "#" + target.id));
+    window.scrollTo(0, 0);
+  }
+  window.addEventListener("hashchange", show);
+  show();
+</script>
+</body>
+</html>
