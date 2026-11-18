@@ -518,7 +518,9 @@
     btn.type = "button";
     btn.textContent = "Copiar prompt";
     box.append(btn);
-    kids[0].before(res, box);
+    kids[0].before(box);
+    const tituloPrompt = [...sec.children].find(el => el.tagName === "H3" && el.textContent.trim() === "PROMPT");
+    (tituloPrompt || box).before(res);
     const body = document.createElement("div");
     box.append(body);
     kids.forEach(k => body.append(k));
