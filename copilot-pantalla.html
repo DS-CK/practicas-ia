@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La pantalla de Copilot</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<style>
+  :root { --bg:#12151c; --panel:#1b2029; --line:#2b3240; --text:#e6e9ef; --muted:#9aa4b5; --green:#2faa3f; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:"Segoe UI",Arial,sans-serif; background:var(--bg); color:var(--text); line-height:1.6; }
+  header { background:linear-gradient(90deg,#0d1016,#0f2a17 55%,#0d1016); border-bottom:1px solid var(--line); padding:14px 28px; display:flex; justify-content:space-between; align-items:center; }
+  header h1 { margin:0; font-size:1.4rem; }
+  header h1 span { color:var(--green); }
+  header p { margin:2px 0 0; color:var(--muted); font-size:.9rem; }
+  .logo { background:#fff; border-radius:8px; padding:4px 10px; display:flex; }
+  .logo img { height:40px; }
+  main { max-width:1400px; margin:0 auto; padding:24px 28px 60px; }
+  .aviso { color:var(--muted); margin:0 0 14px; }
+  .pantalla { position:relative; border:1px solid var(--line); border-radius:10px; overflow:hidden; background:#fff; }
+  .pantalla img { display:block; width:100%; height:auto; }
+  .hs { position:absolute; border:2px solid transparent; border-radius:6px; background:rgba(47,170,63,.0); cursor:pointer; transition:background .15s, border-color .15s; padding:0; }
+  .hs:hover { background:rgba(47,170,63,.18); border-color:var(--green); }
+  .hs.on { background:rgba(47,170,63,.28); border-color:var(--green); box-shadow:0 0 0 3px rgba(47,170,63,.35); }
+  .hs.pulso { animation:pulso 1.8s ease-in-out infinite; }
+  @keyframes pulso { 0%,100% { border-color:rgba(47,170,63,.2); } 50% { border-color:var(--green); } }
+  #info { position:sticky; bottom:12px; margin-top:18px; background:var(--panel); border:1px solid var(--green); border-radius:12px; padding:18px 22px; box-shadow:0 10px 30px rgba(0,0,0,.45); min-height:110px; }
+  #info h2 { margin:0 0 6px; color:#fff; font-size:1.15rem; }
+  #info p { margin:6px 0; }
+  #info .etiqueta { display:inline-block; background:var(--green); color:#fff; font-size:.75rem; font-weight:600; padding:2px 8px; border-radius:20px; margin-bottom:6px; }
+  #info .pendiente { color:#f2c94c; font-size:.9rem; }
+  h2.sec { margin:40px 0 8px; border-bottom:2px solid var(--green); padding-bottom:8px; }
+  .caja { position:relative; background:#0f131a; border:1px solid var(--line); border-radius:8px; padding:16px 18px; margin-top:12px; }
+  .caja p { margin:8px 0; }
+  .copy-btn { float:right; margin:0 0 8px 12px; padding:6px 14px; background:var(--green); color:#fff; border:0; border-radius:6px; font-weight:600; cursor:pointer; }
+  .copy-btn:hover { background:#3cc24e; }
+  ol li { margin:6px 0; }
+  .nota { color:var(--muted); font-style:italic; }
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <h1>La pantalla de <span>Copilot</span></h1>
+    <p>Pulsa sobre cualquier elemento de la captura para ver qué hace.</p>
+  </div>
+  <div class="logo"><img src="logo-chickles.png" alt="Chic-kles Gum"></div>
+</header>
+
+<main>
+  <p class="aviso">Las zonas se iluminan al pasar el ratón. Se explica la pantalla principal tal y como aparece en la captura; algunas opciones pueden variar según la versión y las licencias de cada usuario.</p>
+
+  <div class="pantalla" id="pantalla">
+    <img src="copilot-pantalla.png" alt="Pantalla principal de Copilot">
+  </div>
+
+  <div id="info" role="status" aria-live="polite">
+    <span class="etiqueta">Empieza por aquí</span>
+    <h2>Pantalla principal de Copilot</h2>
+    <p>Copilot sigue el mismo esquema que el resto de asistentes de IA: <b>menú a la izquierda</b> con tus conversaciones y herramientas, y <b>a la derecha el chat</b> donde escribes. Pulsa cualquier zona de la captura para ver su explicación.</p>
+  </div>
+
+  <h2 class="sec">Personalización: dile cómo quieres que responda</h2>
+  <p>Copilot permite guardar unas <b>instrucciones personalizadas</b> para que todas sus respuestas sigan tu estilo sin repetirlo en cada chat.</p>
+  <ol>
+    <li>Abre la <b>configuración</b> (icono del engranaje, abajo a la izquierda, junto a tu nombre).</li>
+    <li>Entra en el apartado de <b>Personalización</b> (el nombre exacto puede variar según la versión).</li>
+    <li>Busca las <b>instrucciones personalizadas</b> y pega el texto que quieras que Copilot tenga siempre presente.</li>
+    <li>Guarda y haz una prueba con una pregunta nueva.</li>
+  </ol>
+  <p class="nota">Pendiente de confirmar: la ruta exacta de menús en nuestra versión de Copilot.</p>
+
+  <p>Ejemplo de instrucciones que puedes copiar:</p>
+  <div class="caja">
+    <button class="copy-btn" type="button" id="copiar">Copiar prompt</button>
+    <div id="prompt">
+      <p>Sé prudente en tus afirmaciones, valoraciones y declaraciones; no prometas más de lo que puedes cumplir ni generes expectativas poco realistas.</p>
+      <p>En cada respuesta, incluye: tu nivel de confianza expresado en porcentaje (%), cualquier punto que no te quede claro y cualquier aspecto sobre el que tengas dudas y que pudiera hacer que cambiaras de opinión.</p>
+    </div>
+  </div>
+</main>
+
+<script>
+  const W = 1915, H = 870;
+  // [x, y, ancho, alto en px de la captura, título, texto, nota opcional pendiente de confirmar]
+  const ZONAS = [
+    [14,8,95,38,"Copilot","Nombre y cabecera de la aplicación. Desde aquí siempre sabes en qué herramienta estás."],
+    [190,12,120,40,"Iconos superiores","Accesos rápidos de la cabecera: cambiar de aplicación de Microsoft 365, ver tareas y mostrar u ocultar el menú lateral para ganar espacio.","Pendiente de confirmar: función exacta de cada icono."],
+    [10,64,288,42,"Nuevo","Inicia una conversación nueva desde cero. Conviene abrir un chat nuevo por cada tema para que Copilot no mezcle contextos."],
+    [10,107,288,40,"Buscar","Busca en tus conversaciones anteriores para recuperar una respuesta o un prompt que ya usaste."],
+    [10,149,288,40,"Biblioteca","Reúne los archivos y contenidos que has creado o subido con Copilot, para volver a ellos más tarde."],
+    [10,190,288,40,"Automatizaciones","Permite programar tareas que Copilot repite por ti, por ejemplo preparar un resumen periódico.","Pendiente de confirmar: disponibilidad en nuestra licencia."],
+    [10,232,288,40,"Complementos","Conecta Copilot con otras aplicaciones y servicios para ampliar lo que puede hacer."],
+    [10,273,288,40,"Agentes","Asistentes especializados para tareas concretas. Cada agente está pensado para un tipo de trabajo."],
+    [10,314,288,40,"Cuadernos","Espacios para reunir en un mismo sitio notas, archivos y conversaciones sobre un tema y trabajar con ellos."],
+    [10,378,288,26,"Anclado","Aquí quedan fijadas las conversaciones que quieres tener siempre a mano."],
+    [10,436,288,68,"Proyectos","Carpetas que agrupan conversaciones y archivos de un mismo asunto, para mantener todo ordenado."],
+    [10,528,288,42,"Novedades","Muestra las últimas funciones y mejoras que van llegando a Copilot."],
+    [10,806,235,50,"Tu perfil y licencia","Indica con qué cuenta trabajas (cuenta de trabajo) y la licencia asociada: «M365 Copilot (Premium)».","Pendiente de confirmar: significado exacto de «Premium» en nuestra empresa."],
+    [272,816,34,34,"Configuración y personalización","Engranaje de ajustes. Aquí se accede a la <b>personalización</b>: puedes indicar cómo quieres que Copilot responda (tono, formato, prudencia…). Más abajo en esta página tienes un ejemplo listo para copiar."],
+    [338,12,78,40,"Work IQ","Es la capa que permite a Copilot <b>conocer tu contexto de trabajo</b>: correos, archivos, reuniones y chats de Microsoft 365. Copilot usa lo que tú tienes permiso para ver; respeta los permisos existentes, no abre información a la que no tengas acceso.","Pendiente de confirmar: si se debe presentar como contexto de toda la empresa. Con la información disponible, su alcance es el de los datos a los que cada usuario ya tiene acceso."],
+    [432,12,120,40,"Automático","Selector del modo de respuesta. En «Automático» Copilot decide cuánto razonar según la complejidad de la pregunta; puedes cambiarlo si quieres respuestas más rápidas o más elaboradas."],
+    [1785,14,40,40,"Protección de datos","El escudo verde indica que <b>se aplican las políticas de seguridad y cumplimiento de Microsoft 365</b>, igual que en el resto de aplicaciones corporativas: tus datos de trabajo están protegidos y no salen del entorno de la empresa.","Pendiente de confirmar: texto oficial de Microsoft sobre el alcance de esta protección."],
+    [1828,14,40,40,"Conversación","Icono de conversación de la cabecera.","Pendiente de confirmar: función exacta (por ejemplo, abrir o compartir la conversación actual)."],
+    [1870,14,40,40,"Más opciones","Menú con opciones adicionales de la conversación actual."],
+    [690,243,860,100,"Mensaje de bienvenida","Copilot te sugiere ejemplos de lo que puedes preguntarle, adaptados a tu contexto de trabajo (en este caso, tu calendario)."],
+    [670,370,900,132,"Cuadro de mensaje","<b>Aquí se escribe el chat</b>: describe lo que necesitas con tantos detalles como puedas. Cuanto mejor sea el prompt, mejor será la respuesta."],
+    [686,448,38,38,"Añadir (+)","Permite adjuntar archivos, imágenes u otros contenidos para que Copilot trabaje con ellos."],
+    [740,447,158,40,"Chat / Cowork","Chat es la conversación normal de preguntas y respuestas. Cowork es el modo en que Copilot trabaja contigo en tareas más largas.","Pendiente de confirmar: diferencia exacta entre ambos modos."],
+    [1467,450,36,36,"Dictar por voz","Permite hablarle a Copilot en lugar de escribir."],
+    [1516,450,40,36,"Conversación por voz","Inicia una conversación hablada con Copilot."],
+    [670,580,642,54,"Sugerencias","Atajos con ideas de prompts listos para usar. Son útiles para ver ejemplos y empezar rápido.","Pendiente de confirmar: si se personalizan según el uso de cada usuario."],
+    [1332,594,40,30,"Más sugerencias","Muestra más ideas de prompts."]
+  ];
+  const cont = document.getElementById("pantalla"), info = document.getElementById("info");
+  ZONAS.forEach((z, i) => {
+    const b = document.createElement("button");
+    b.className = "hs"; b.type = "button"; b.setAttribute("aria-label", z[4]);
+    b.style.left = (z[0]/W*100)+"%"; b.style.top = (z[1]/H*100)+"%";
+    b.style.width = (z[2]/W*100)+"%"; b.style.height = (z[3]/H*100)+"%";
+    b.addEventListener("click", () => {
+      cont.querySelectorAll(".hs.on").forEach(e => e.classList.remove("on"));
+      b.classList.add("on");
+      info.innerHTML = '<span class="etiqueta">Elemento</span><h2>' + z[4] + '</h2><p>' + z[5] + '</p>' + (z[6] ? '<p class="pendiente">⚠ ' + z[6] + '</p>' : '');
+    });
+    cont.append(b);
+  });
+  document.getElementById("copiar").addEventListener("click", async e => {
+    const text = document.getElementById("prompt").innerText.trim();
+    try { await navigator.clipboard.writeText(text); }
+    catch (err) { const ta = document.createElement("textarea"); ta.value = text; document.body.append(ta); ta.select(); document.execCommand("copy"); ta.remove(); }
+    e.target.textContent = "¡Copiado!";
+    setTimeout(() => e.target.textContent = "Copiar prompt", 1800);
+  });
+</script>
+</body>
+</html>
