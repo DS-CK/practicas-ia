@@ -66,6 +66,7 @@
   .resumen b { color:var(--green); }
   .prompt-box { position:relative; background:#0f131a; border:1px solid var(--line); border-radius:8px; padding:16px 18px; margin-top:12px; }
   .copy-btn { position:sticky; float:right; top:80px; margin:0 0 8px 12px; padding:6px 14px; background:var(--green); color:#fff; border:0; border-radius:6px; font-weight:600; cursor:pointer; }
+  .tema-sel { position:sticky; float:right; top:80px; margin:0 0 8px 12px; padding:6px 10px; background:#1b2029; color:var(--text); border:1px solid var(--green); border-radius:6px; font-size:.95rem; cursor:pointer; }
   .copy-btn:hover { background:#3cc24e; }
   @media (max-width:800px) { .copy-btn { top:10px; } }
 </style>
@@ -355,7 +356,7 @@
   <img class="captura" src="asesores.png" alt="Los 5 asesores de IA">
   <h3>LOS 5 ASESORES</h3>
   <p>Actúa como un panel de cinco asesores para ayudarme a analizar una decisión.</p>
-  <p>Mi caso o decisión: [Escribe aquí el asunto que quieres analizar].</p>
+  <p>Mi caso o decisión: <span id="asunto">[Escribe aquí el asunto que quieres analizar]</span>.</p>
   <p>Antes de empezar, hazme tres preguntas, una a una, para entender el contexto, mi objetivo y las restricciones. Espera mi respuesta antes de formular la siguiente.</p>
   <p>Después, analiza el caso desde cinco perspectivas. Dedica un máximo de cinco líneas a cada una:</p>
   <ol>
@@ -566,6 +567,16 @@
     btn.type = "button";
     btn.textContent = "Copiar prompt";
     box.append(btn);
+    if (sec.id === "s2-consejos") {
+      const sel = document.createElement("select");
+      sel.className = "tema-sel";
+      sel.setAttribute("aria-label", "Tema del caso");
+      ["Elige un tema…", "Plástico reciclable", "Factura electrónica", "Invertir en formación", "Externalizar análisis de calidad"].forEach((n, i) => sel.add(new Option(n, i ? n : "")));
+      box.append(sel);
+      const asunto = sec.querySelector("#asunto");
+      const original = asunto.textContent;
+      sel.addEventListener("change", () => { asunto.textContent = sel.value || original; });
+    }
     kids[0].before(box);
     const tituloPrompt = [...sec.children].find(el => el.tagName === "H3" && el.textContent.trim() === "PROMPT");
     (tituloPrompt || sec.querySelector(".captura") || box).before(res);
