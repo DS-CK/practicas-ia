@@ -85,21 +85,21 @@ const MENSAJES = {
     "Silvia, estás hecha toda una experta. Las auditorías ya no dan miedo.",
     "Silvia, hemos terminado. Eres el Jedi de la IA y la reina de la calidad."
   ],
-  Javi: [
-    "Venga Javi, empezamos en el mundo de la IA. Personas y tecnología, ¡qué buen equipo!",
-    "Javi, primer prompt copiado. La IA ya te ayuda a cuidar de la gente de CK.",
-    "Javi, con la IA hasta las nóminas sonríen. Bueno, casi. Sigue así.",
-    "Personas en modo experto, Javi. La IA hace lo repetitivo y tú lo humano.",
-    "Javi, el talento de CK es muy dulce. Y tú sabes cómo mimarlo.",
-    "Ya mascas la IA mejor que un chicle de fresa, Javi.",
-    "Mitad del camino, Javi. Selección, formación y clima laboral con un cerebro extra.",
-    "Javi, hasta las entrevistas se te dan mejor. La IA te pasa el guion.",
-    "Esto marcha, Javi. Los equipos de CK van a notar tu superpoder.",
-    "Javi, la IA no sustituye a las personas. Pero a ti te hace más grande.",
-    "Cada prompt suma, Javi. El departamento de Personas va camino de ser legendario.",
-    "Javi, casi llegas. Gestionar talento con IA ya no tiene secretos para ti.",
-    "Último tramo, Javi. Hasta el convenio colectivo te parece pan comido.",
-    "Javi, la plantilla de CK tiene suerte. Tienes IA, empatía y mucho estilo.",
-    "Javi, hemos terminado. Eres el Jedi de la IA y el alma de CK."
+  Javier: [
+    "Venga Javier, empezamos en el mundo de la IA. Personas y tecnología, ¡qué buen equipo!",
+    "Javier, primer prompt copiado. La IA ya te ayuda a cuidar de la gente de CK.",
+    "Javier, con la IA hasta las nóminas sonríen. Bueno, casi. Sigue así.",
+    "Personas en modo experto, Javier. La IA hace lo repetitivo y tú lo humano.",
+    "Javier, el talento de CK es muy dulce. Y tú sabes cómo mimarlo.",
+    "Ya mascas la IA mejor que un chicle de fresa, Javier.",
+    "Mitad del camino, Javier. Selección, formación y clima laboral con un cerebro extra.",
+    "Javier, hasta las entrevistas se te dan mejor. La IA te pasa el guion.",
+    "Esto marcha, Javier. Los equipos de CK van a notar tu superpoder.",
+    "Javier, la IA no sustituye a las personas. Pero a ti te hace más grande.",
+    "Cada prompt suma, Javier. El departamento de Personas va camino de ser legendario.",
+    "Javier, casi llegas. Gestionar talento con IA ya no tiene secretos para ti.",
+    "Último tramo, Javier. Hasta el convenio colectivo te parece pan comido.",
+    "Javier, la plantilla de CK tiene suerte. Tienes IA, empatía y mucho estilo.",
+    "Javier, hemos terminado. Eres el Jedi de la IA y el alma de CK."
   ]
 };
