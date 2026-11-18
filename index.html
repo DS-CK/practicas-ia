@@ -69,6 +69,8 @@
   .tema-sel { position:sticky; float:right; top:80px; margin:0 0 8px 12px; padding:6px 10px; background:#1b2029; color:var(--text); border:1px solid var(--green); border-radius:6px; font-size:.95rem; cursor:pointer; }
   .copy-btn:hover { background:#3cc24e; }
   @media (max-width:800px) { .copy-btn { top:10px; } }
+  .c-rol{color:#9a8cff}.c-aud{color:#f0b45a}.c-ctx{color:#ff9a7a}.c-fmt{color:#2fc7ca}.c-lim{color:#a9a7b5}
+  .leyenda{font-size:.9rem}
 </style>
 </head>
 <body>
@@ -98,6 +100,7 @@
   <a href="#s1-2-1" class="sub">1.2.1 Generar una presentación</a>
   <a href="#s1c" class="group">1. Crear con Copilot</a>
   <a href="#s1c-1" class="sub">1.1.1 Generar un buen prompt</a>
+  <a href="#s1c-2" class="sub">1.1.2 Usa tu prompt</a>
   <a href="#s2-1" class="group">2.1 Analizar con Copilot</a>
   <a href="#s2-1-1" class="sub">2.1.1 Analizar con Copilot</a>
   <a href="#s2-consejos" class="sub">2.1.2 Los 5 asesores</a>
@@ -321,6 +324,17 @@
   <img class="captura" src="anatomia-prompt.png" alt="La anatomía de un buen prompt">
 </section>
 
+<section id="s1c-2">
+  <h2>1.1.2 Usa tu prompt</h2>
+  <p class="note">Tres prompts construidos con la anatomía de un buen prompt. Se personalizan con el nombre elegido arriba a la derecha.</p>
+  <p class="leyenda"><span class="c-rol">■ Rol</span> · <span class="c-aud">■ Audiencia</span> · <span class="c-ctx">■ Contexto</span> · <span class="c-fmt">■ Formato</span> · <span class="c-lim">■ Límite</span></p>
+  <h3>Factura electrónica obligatoria</h3>
+  <div class="prompt-box pa"><button class="copy-btn" type="button">Copiar prompt</button><div class="pa-body"><p><span class="c-rol">Soy <span class="nombre"></span>. Eres un asesor experto en normativa fiscal y administrativa para empresas.</span> <span class="c-aud">Preparo esto para mi equipo de administración.</span> <span class="c-ctx">Abre la Orden HAC/1028/2026 (BOE): https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-20587 y explícame qué regula esta orden y qué implicaciones prácticas tiene para una empresa mediana.</span> <span class="c-fmt">Conviértelo en una checklist de 5 pasos para mi equipo de administración.</span> <span class="c-lim">Tono claro y directo, máximo una página; si algo no consta en el documento, dímelo en lugar de suponerlo.</span></p></div></div>
+  <h3>El nuevo reglamento europeo de envases</h3>
+  <div class="prompt-box pa"><button class="copy-btn" type="button">Copiar prompt</button><div class="pa-body"><p><span class="c-rol">Soy <span class="nombre"></span>. Eres un experto en normativa europea de envases para la industria alimentaria.</span> <span class="c-aud">Preparo esto para el comité de dirección de una fábrica de helados.</span> <span class="c-ctx">Abre el Reglamento (UE) 2025/40, texto consolidado en español (EUR-Lex): https://eur-lex.europa.eu/legal-content/ES/TXT/HTML/?uri=CELEX:02025R0040-20250122 y dime qué obligaciones tiene un fabricante de helados o alimentos con envases de plástico y en qué plazos.</span> <span class="c-fmt">Preséntalo en una tabla, añade las 5 preguntas que debería hacerle a mi proveedor de envases y cierra con un resumen de 5 líneas.</span> <span class="c-lim">Tono ejecutivo, sin superar una página; indica en qué artículos te basas.</span></p></div></div>
+  <h3>El mercado en cifras</h3>
+  <div class="prompt-box pa"><button class="copy-btn" type="button">Copiar prompt</button><div class="pa-body"><p><span class="c-rol">Soy <span class="nombre"></span>. Eres un analista de mercado inmobiliario.</span> <span class="c-aud">Preparo esto para una promotora en Valencia.</span> <span class="c-ctx">Abre el Índice de Precios de Vivienda del INE, 2.º trimestre 2026: https://ine.es/dyngs/Prensa/IPV2T26.htm y extrae en una tabla la variación anual del precio de la vivienda por comunidad autónoma.</span> <span class="c-fmt">Crea un gráfico de barras destacando la Comunitat Valenciana, dame 3 conclusiones y cierra con un resumen de 5 líneas para el comité de dirección.</span> <span class="c-lim">Usa solo los datos de la página, sin inventar cifras; máximo una página.</span></p></div></div>
+</section>
 <section id="s2-1">
   <h2>2.1 Analizar con Copilot</h2>
   <p>Selecciona una práctica en el menú de la izquierda.</p>
@@ -609,6 +623,21 @@
       catch (e) { const ta = document.createElement("textarea"); ta.value = text; document.body.append(ta); ta.select(); document.execCommand("copy"); ta.remove(); }
       btn.textContent = "¡Copiado!";
       mostrarMensaje(indice, totalPrompts);
+      setTimeout(() => btn.textContent = "Copiar prompt", 1800);
+    });
+  });
+  const nombreSpans = document.querySelectorAll(".nombre");
+  function pintarNombre() { nombreSpans.forEach(s => s.textContent = selUsuario.value || "[tu nombre]"); }
+  selUsuario.addEventListener("change", pintarNombre);
+  pintarNombre();
+  document.querySelectorAll(".prompt-box.pa").forEach((box, i) => {
+    const btn = box.querySelector(".copy-btn");
+    btn.addEventListener("click", async () => {
+      const text = box.querySelector(".pa-body").innerText.trim();
+      try { await navigator.clipboard.writeText(text); }
+      catch (e) { const ta = document.createElement("textarea"); ta.value = text; document.body.append(ta); ta.select(); document.execCommand("copy"); ta.remove(); }
+      btn.textContent = "¡Copiado!";
+      mostrarMensaje(i * 3, totalPrompts);
       setTimeout(() => btn.textContent = "Copiar prompt", 1800);
     });
   });
