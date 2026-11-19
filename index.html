@@ -565,7 +565,7 @@
     toast.textContent = base.replace(/[\s.!?…]+$/, "") + ". Ahora pega este prompt en el chat de tu IA.";
     toast.classList.add("on");
     clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => toast.classList.remove("on"), 4500);
+    toastTimer = setTimeout(() => toast.classList.remove("on"), 9500);
   }
   const totalPrompts = document.querySelectorAll("section[data-resumen]").length;
   document.querySelectorAll("section[data-resumen]").forEach((sec, indice) => {
