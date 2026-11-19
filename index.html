@@ -626,7 +626,7 @@
   const sections = [...document.querySelectorAll("main section")];
   const links = [...document.querySelectorAll("#menu a")];
   function show() {
-    const id = (location.hash || "#s1-1-1").slice(1);
+    const id = (location.hash || "#s1-1").slice(1);
     const target = document.getElementById(id) || sections[0];
     sections.forEach(s => s.classList.toggle("active", s === target));
     links.forEach(a => a.classList.toggle("active", a.getAttribute("href") === "#" + target.id));
