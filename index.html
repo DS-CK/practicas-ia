@@ -127,7 +127,7 @@
   <a href="#s4-1-1" class="sub">7.1 Programación de una web simple</a>
   <a href="#s5" class="group">8. Automatización / Skills y agentes</a>
   <a href="#s5-1" class="sub">8.1 Automatizar aprobación factura</a>
-  <a href="#s5-2" class="sub">8.2 Skill para crear presentaciones</a>
+  <a href="#s5-2" class="sub">8.2 Skill para resumir reuniones</a>
 </nav>
 
 <main>
@@ -584,45 +584,21 @@
 </section>
 
 <section id="s5-2">
-  <h2>8.2 Skill para crear presentaciones</h2>
-  <p class="resumen"><b>Resumen:</b> En esta práctica crearemos una Skill para generar un PowerPoint con diapositivas que mantengan esta estética pero con datos actualizados.</p>
-  <div style="display:flex;gap:12px;align-items:flex-start"><img class="captura" style="width:calc(50% - 6px);margin-top:14px" src="skill-xirivella.png" alt="Slide de referencia: Nuestro Xirivella 2026">
-  <img class="captura" style="width:calc(50% - 6px);margin-top:14px" src="skill-botes.png" alt="Slide de referencia: Evolución capacidad botes"></div>
+  <h2>8.2 Skill para resumir reuniones</h2>
+  <p class="resumen"><b>Resumen:</b> En esta práctica vamos a generar una Skill para resumir reuniones.</p>
+  <div style="display:flex;gap:12px;align-items:flex-start"><img class="captura" style="width:calc(50% - 6px);margin-top:14px" src="skill-resumen.png" alt="Resumen de cinco puntos con logotipo de Chickles Gum"><img class="captura" style="width:calc(50% - 6px);margin-top:14px" src="skill-tareas.png" alt="Tabla de tareas con fecha y responsable"></div>
 
-  <h3>PROMPT 1 · Crear la Skill</h3>
+  <h3>PROMPT</h3>
   <div class="prompt-box pa"><button class="copy-btn" type="button">Copiar prompt</button><div class="pa-body">
-    <p>Crea una Skill para generar presentaciones PowerPoint destinadas a este cliente, utilizando como referencia la estética de las slides adjuntas.</p>
-    <p>La Skill debe identificar y mantener su lenguaje visual: encabezados, tipografía, colores, números grandes, símbolos, flechas, imágenes y jerarquía. Debe servir para cualquier temática y adaptar la composición al contenido, sin convertir los ejemplos en plantillas rígidas.</p>
-    <p>La salida debe ser un PowerPoint 16:9, visual y completamente editable. No debe inventar información ni recursos de marca. Antes de crear la Skill, preséntame brevemente la propuesta.</p>
-  </div></div>
-
-  <h3>PROMPT 2 · Datos para las diapositivas</h3>
-  <div class="prompt-box pa"><button class="copy-btn" type="button">Copiar prompt</button><div class="pa-body">
-    <p>Diapositiva 1: “PLAN DE EFICIENCIA INDUSTRIAL – 2027”</p>
-    <p>Presentar un cuadro ejecutivo con estos indicadores:</p>
-    <ul>
-      <li>Productividad: +8 %</li>
-      <li>Merma de proceso: –1,2 puntos</li>
-      <li>Capacidad de línea: +15 %</li>
-      <li>Consumo energético: –10 %</li>
-      <li>Ahorro anual estimado: 185.000 €</li>
-    </ul>
-    <p>Asociar cada indicador con acciones concretas:</p>
-    <ul>
-      <li>Reducción de microparadas.</li>
-      <li>Mejora de los cambios de formato.</li>
-      <li>Ajuste de dosificación.</li>
-      <li>Eliminación del cuello de botella de empaquetado.</li>
-      <li>Medición energética por línea.</li>
-    </ul>
-    <p>Diapositiva 2: “EVOLUCIÓN CAPACIDAD DE ENVASADO”</p>
-    <p>Representar una evolución horizontal en cuatro etapas:</p>
-    <ul>
-      <li>ENE/2027: 60 UTD/H, situación actual.</li>
-      <li>JUN/2027: 90 UTD/H, mejora de cambios.</li>
-      <li>DIC/2027: 130 UTD/H, automatización.</li>
-      <li>JUN/2028: 180 UTD/H, nueva línea.</li>
-    </ul>
+    <p>Crea una skill llamada «resumen-ejecutivo» que use solo la transcripción pegada o adjunta. Si falta, pídela.</p>
+    <p>Resume en español exactamente cinco puntos breves, con lo esencial en negrita.</p>
+    <p>Añade «Tareas» con una tabla de compromisos explícitos: Fecha | Tarea | Responsable.</p>
+    <p>Respeta los plazos acordados. Si falta una fecha, suma al día de hoy entre 1 y 10 días naturales al azar y márcala como orientativa.</p>
+    <p>Si falta un responsable, pregunta por cada tarea sin sugerir nombres y espera la respuesta antes de cerrar la entrega.</p>
+    <p>Marca los responsables confirmados después de la reunión y usa «Sin asignar» solo si el usuario lo confirma.</p>
+    <p>Si no hay compromisos explícitos, indícalo bajo «Tareas» sin crear una tabla.</p>
+    <p>Muestra los cinco puntos y el bloque «Tareas» completos en el chat y en un Word editable con el logotipo original de Chickles Gum.</p>
+    <p>Verifica el contenido y el logotipo, y deja solo el enlace al Word en la última línea.</p>
   </div></div>
 </section>
 
