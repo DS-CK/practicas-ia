@@ -1,5 +1,22 @@
 // 15 mensajes por persona, ordenados de principio a fin del recorrido (máx. 20 palabras cada uno)
 const MENSAJES = {
+  Samuel: [
+    "Venga Samuel, empezamos en el mundo de la IA. Esto va a ser pegajoso.",
+    "Samuel, primer prompt copiado. La IA ya trabaja para ti.",
+    "Con la IA todo fluye, Samuel. Hasta los lunes se dejan.",
+    "Samuel, la IA no pide café. Tú sí, y te lo mereces.",
+    "Tu equipo va a flipar con lo que estás aprendiendo, Samuel.",
+    "Samuel, más chicles y menos tareas repetitivas. Así da gusto.",
+    "Mitad del camino, Samuel. Ya piensas como un experto en IA.",
+    "Samuel, ya eres el más pegajoso de la IA. Nadie te despega.",
+    "Esto ya es un hábito, Samuel. Cada vez lo haces mejor.",
+    "Samuel, hasta los problemas se rinden ante tus prompts.",
+    "Cada prompt suma, Samuel. Vas como un cohete.",
+    "Samuel, casi llegas. Lo difícil ya está hecho.",
+    "Último tramo, Samuel. Tus resultados van a brillar.",
+    "Samuel, la IA ya trabaja a tu favor. Ahora te sobra tiempo.",
+    "Samuel, hemos terminado. Eres el Jedi de la IA."
+  ],
   Antonio: [
     "Venga Antonio, empezamos en el mundo de la IA. Hoy el director también aprende trucos nuevos.",
     "Antonio, primer prompt copiado. La IA ya trabaja para ti, como un buen equipo directivo.",
